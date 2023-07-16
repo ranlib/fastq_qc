@@ -92,11 +92,11 @@ workflow clockwork_workflow {
   parameter_meta {
  
     input_reads_1: {
-      description: "List of fastq files with forward reads.",
+      description: "fastq file with forward reads.",
       category: "required"
     }
     input_reads_2: {
-      description: "List of fastq files with reverse reads.",
+      description: "fastq file with reverse reads.",
       category: "required"
     }
     reference: {

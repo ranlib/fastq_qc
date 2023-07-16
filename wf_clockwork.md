@@ -8,12 +8,12 @@
 <p name="clockwork_workflow.input_reads_1">
         <b>clockwork_workflow.input_reads_1</b><br />
         <i>File &mdash; Default: None</i><br />
-        List of fastq files with forward reads.
+        fastq file with forward reads.
 </p>
 <p name="clockwork_workflow.input_reads_2">
         <b>clockwork_workflow.input_reads_2</b><br />
         <i>File &mdash; Default: None</i><br />
-        List of fastq files with reverse reads.
+        fastq file with reverse reads.
 </p>
 <p name="clockwork_workflow.metadata_file">
         <b>clockwork_workflow.metadata_file</b><br />
