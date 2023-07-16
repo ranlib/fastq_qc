@@ -1,0 +1,11 @@
+{
+  "clockwork_workflow.output_bam": "clockwork.bam",
+  "clockwork_workflow.output_read_2": "2.fq",
+  "clockwork_workflow.output_read_1": "1.fq",
+  "clockwork_workflow.output_file": "clockwork.stats",
+  "clockwork_workflow.metadata_file": "/home/dieterbest/Software/NCHHSTP-DTBE-Varpipe-WGS/tools/clockwork-0.11.3/OUT/remove_contam_metadata.tsv",
+  "clockwork_workflow.reference": "/home/dieterbest/Analysis/varpipe4/references/NC_000962.3/NC_000962.3.fasta",
+  "clockwork_workflow.input_read_1": "/home/dieterbest/Analysis/varpipe4/data/ERR552797_30percent_1.fq.gz",
+  "clockwork_workflow.input_read_2": "/home/dieterbest/Analysis/varpipe4/data/ERR552797_30percent_2.fq.gz",
+  "clockwork_workflow.sample_name": "ERR552797"
+}
