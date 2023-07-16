@@ -83,7 +83,7 @@ workflow clockwork_workflow {
     File clean_reads_2 = remove_contam.cleaned_reads_2
   }
 
-    meta {
+  meta {
     author: "Dieter Best"
     email: "Dieter.Best@cdph.ca.gov"
     description: "## clockwork decontamination workflow \n This is from the clockwork TB profiler: https://github.com/iqbal-lab-org/clockwork."
@@ -112,7 +112,19 @@ workflow clockwork_workflow {
       category: "required"
     }
     output_bam: {
-      description: "Output alignement file of alignment procedure, aligner is minimap2.",
+      description: "Name for output alignement file of alignment procedure, aligner is minimap2.",
+      category: "common"
+    }
+    output_file: {
+      description: "Name for file with decontamination statistics.",
+      category: "common"
+    }
+    output_reads_1: {
+      description: "Name of cleaned output fastq file for forward reads.",
+      category: "common"
+    }
+    output_reads_2: {
+      description: "Name of cleaned output fastq file for reverse reads.",
       category: "common"
     }
     # output

@@ -24,22 +24,22 @@
 <p name="clockwork_workflow.output_bam">
         <b>clockwork_workflow.output_bam</b><br />
         <i>String &mdash; Default: None</i><br />
-        Output alignement file of alignment procedure, aligner is minimap2.
+        Name for output alignement file of alignment procedure, aligner is minimap2.
 </p>
 <p name="clockwork_workflow.output_file">
         <b>clockwork_workflow.output_file</b><br />
         <i>String &mdash; Default: None</i><br />
-        ???
+        Name for file with decontamination statistics.
 </p>
 <p name="clockwork_workflow.output_reads_1">
         <b>clockwork_workflow.output_reads_1</b><br />
         <i>String &mdash; Default: None</i><br />
-        ???
+        Name of cleaned output fastq file for forward reads.
 </p>
 <p name="clockwork_workflow.output_reads_2">
         <b>clockwork_workflow.output_reads_2</b><br />
         <i>String &mdash; Default: None</i><br />
-        ???
+        Name of cleaned output fastq file for reverse reads.
 </p>
 <p name="clockwork_workflow.reference">
         <b>clockwork_workflow.reference</b><br />
