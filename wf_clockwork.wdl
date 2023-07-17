@@ -100,7 +100,7 @@ workflow clockwork_workflow {
       category: "required"
     }
     reference: {
-      description: "Reference sequence to align to.",
+      description: "Multi-fasta file of sequences that could be contaminants.",
       category: "required"
     }
     sample_name: {
@@ -108,7 +108,7 @@ workflow clockwork_workflow {
       category: "required"
     }
     metadata_file: {
-      description: "tsv file with contamination information to check against, for example: \n https://raw.githubusercontent.com/CDCgov/NCHHSTP-DTBE-Varpipe-WGS/master/tools/clockwork-0.11.3/OUT/remove_contam_metadata.tsv",
+      description: "tsv file with information about contaminants to check against, for example: \n https://raw.githubusercontent.com/CDCgov/NCHHSTP-DTBE-Varpipe-WGS/master/tools/clockwork-0.11.3/OUT/remove_contam_metadata.tsv",
       category: "required"
     }
     output_bam: {
