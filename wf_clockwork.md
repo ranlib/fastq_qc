@@ -18,7 +18,7 @@
 <p name="clockwork_workflow.metadata_file">
         <b>clockwork_workflow.metadata_file</b><br />
         <i>File &mdash; Default: None</i><br />
-        tsv file with contamination information to check against, for example: 
+        tsv file with information about contaminants to check against, for example: 
  https://raw.githubusercontent.com/CDCgov/NCHHSTP-DTBE-Varpipe-WGS/master/tools/clockwork-0.11.3/OUT/remove_contam_metadata.tsv
 </p>
 <p name="clockwork_workflow.output_bam">
@@ -44,7 +44,7 @@
 <p name="clockwork_workflow.reference">
         <b>clockwork_workflow.reference</b><br />
         <i>File &mdash; Default: None</i><br />
-        Reference sequence to align to.
+        Multi-fasta file of sequences that could be contaminants.
 </p>
 <p name="clockwork_workflow.sample_name">
         <b>clockwork_workflow.sample_name</b><br />
