@@ -3,9 +3,10 @@
     "clockwork_workflow.output_reads_1": "1.fq",
     "clockwork_workflow.output_reads_2": "2.fq",
     "clockwork_workflow.output_file": "clockwork.stats",
-    "clockwork_workflow.metadata_file": "/home/dieterbest/Software/NCHHSTP-DTBE-Varpipe-WGS/tools/clockwork-0.11.3/OUT/remove_contam_metadata.tsv",
-    "clockwork_workflow.reference": "/home/dieterbest/Analysis/varpipe4/references/NC_000962.3/NC_000962.3.fasta.gz",
-    "clockwork_workflow.input_reads_1": "/home/dieterbest/Analysis/varpipe4/data/ERR552797_30percent_1.fq.gz",
-    "clockwork_workflow.input_reads_2": "/home/dieterbest/Analysis/varpipe4/data/ERR552797_30percent_2.fq.gz",
-    "clockwork_workflow.sample_name": "ERR552797"
+    "clockwork_workflow.metadata_file": "clockwork_decontamination_metadata.tsv",
+    "clockwork_workflow.reference": "contaminants.fa.gz",
+    "clockwork_workflow.input_reads_1": "/home/dieterbest/Analysis/varpipe4/data/ERR552797_1.fastq.gz",
+    "clockwork_workflow.input_reads_2": "/home/dieterbest/Analysis/varpipe4/data/ERR552797_2.fastq.gz",
+    "clockwork_workflow.sample_name": "ERR552797",
+    "clockwork_workflow.threads": 10
 }
