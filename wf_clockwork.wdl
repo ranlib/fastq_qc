@@ -7,10 +7,11 @@ task map_reads {
     File input_reads_1
     File input_reads_2
     String output_bam
+    Int threads = 1
   }
 
   command {
-    clockwork map_reads --unsorted_sam ${sample_name} ${reference} ${output_bam} ${input_reads_1} ${input_reads_2}
+    clockwork map_reads --threads ${threads} --unsorted_sam ${sample_name} ${reference} ${output_bam} ${input_reads_1} ${input_reads_2}
   }
   
   output {
@@ -57,17 +58,19 @@ workflow clockwork_workflow {
     String output_file
     String output_reads_1
     String output_reads_2
+    Int threads = 1
   }
   
   call map_reads {
     input:
-      sample_name = sample_name,
-      output_bam = output_bam,
-      reference = reference,
-      input_reads_1 = input_reads_1,
-      input_reads_2 = input_reads_2
+    sample_name = sample_name,
+    output_bam = output_bam,
+    reference = reference,
+    input_reads_1 = input_reads_1,
+    input_reads_2 = input_reads_2,
+    threads = threads
   }
-
+  
   call remove_contam {
     input:
     metadata_file = metadata_file,
