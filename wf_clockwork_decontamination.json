@@ -1,12 +1,8 @@
 {
-    "clockwork_workflow.output_bam": "clockwork.bam",
-    "clockwork_workflow.output_reads_1": "1.fq",
-    "clockwork_workflow.output_reads_2": "2.fq",
-    "clockwork_workflow.output_file": "clockwork.stats",
-    "clockwork_workflow.metadata_file": "clockwork_decontamination_metadata.tsv",
-    "clockwork_workflow.reference": "contaminants.fa.gz",
-    "clockwork_workflow.input_reads_1": "/home/dieterbest/Analysis/varpipe4/data/ERR552797_1.fastq.gz",
-    "clockwork_workflow.input_reads_2": "/home/dieterbest/Analysis/varpipe4/data/ERR552797_2.fastq.gz",
-    "clockwork_workflow.sample_name": "ERR552797",
-    "clockwork_workflow.threads": 10
+    "wf_clockwork_decontamination.reference": "clockwork_contaminants.fa.gz",
+    "wf_clockwork_decontamination.metadata_file": "clockwork_decontamination_metadata.tsv",
+    "wf_clockwork_decontamination.input_reads_1": "/home/dieterbest/Analysis/varpipe4/data/ERR552797_1.fastq.gz",
+    "wf_clockwork_decontamination.input_reads_2": "/home/dieterbest/Analysis/varpipe4/data/ERR552797_2.fastq.gz",
+    "wf_clockwork_decontamination.sample_name": "ERR552797",
+    "wf_clockwork_decontamination.threads": 10
 }
