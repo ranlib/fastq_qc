@@ -2,20 +2,20 @@ version 1.0
 
 import "./task_clockwork_decontamination.wdl"  as cd
 
-workflow clockwork_workflow {
+workflow wf_clockwork_decontamination {
   input {
     String sample_name
     File metadata_file
     File reference
     File input_reads_1
     File input_reads_2
-    String output_bam
-    String output_file
-    String output_reads_1
-    String output_reads_2
+    String output_bam = sample_name + "_clockwork_decontamination.bam"
+    String output_file = sample_name + "_clockwork_decontamination.stats"
+    String output_reads_1 = sample_name + "_clockwork_cleaned_1.fq.gz"
+    String output_reads_2 = sample_name + "_clockwork_cleaned_2.fq.gz"
     Int threads = 1
   }
-  
+
   call cd.map_reads {
     input:
     sample_name = sample_name,
@@ -25,7 +25,7 @@ workflow clockwork_workflow {
     input_reads_2 = input_reads_2,
     threads = threads
   }
-  
+
   call cd.remove_contam {
     input:
     metadata_file = metadata_file,
@@ -71,19 +71,19 @@ workflow clockwork_workflow {
     }
     output_bam: {
       description: "Name for output alignement file of alignment procedure, aligner is minimap2.",
-      category: "common"
+      category: "optional"
     }
     output_file: {
       description: "Name for file with decontamination statistics.",
-      category: "common"
+      category: "optional"
     }
     output_reads_1: {
       description: "Name of cleaned output fastq file for forward reads.",
-      category: "common"
+      category: "optional"
     }
     output_reads_2: {
       description: "Name of cleaned output fastq file for reverse reads.",
-      category: "common"
+      category: "optional"
     }
     # output
     stats: {description: "Output file for decontamination statistics."}
