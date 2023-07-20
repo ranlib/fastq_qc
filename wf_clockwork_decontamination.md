@@ -52,6 +52,16 @@
         Name of the sample.
 </p>
 
+### Other inputs
+<details>
+<summary> Show/Hide </summary>
+<p name="clockwork_workflow.threads">
+        <b>clockwork_workflow.threads</b><br />
+        <i>Int &mdash; Default: 1</i><br />
+        ???
+</p>
+</details>
+
 ## Outputs
 <p name="clockwork_workflow.clean_reads_1">
         <b>clockwork_workflow.clean_reads_1</b><br />
