@@ -1,0 +1,14 @@
+{
+    "wf_metaphlan.analysis_type": "rel_ab",
+    "wf_metaphlan.bowtie2db": "/path/to/bowtie2db",
+    "wf_metaphlan.input_type": "fastq",
+    "wf_metaphlan.nproc": 12,
+    "wf_metaphlan.output_file_name": "metaphlan_output.txt",
+    "wf_metaphlan.read1": "/home/dieterbest/Analysis/varpipe4/data/ERR552797_30percent_1`.fq.gz",
+    "wf_metaphlan.read2": "/home/dieterbest/Analysis/varpipe4/data/ERR552797_30percent_2.fq.gz",
+    "wf_metaphlan.sample_name": "ERR552797",
+    "wf_metaphlan.task_metaphlan.bowtie2index": "String",
+    "wf_metaphlan.task_metaphlan.docker": "dbest/metaphlan:v4.1.1",
+    "wf_metaphlan.task_metaphlan.memory": "12GB",
+    "wf_metaphlan.task_metaphlan.taxonomic_level": "a"
+}
