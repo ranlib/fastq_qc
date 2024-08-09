@@ -20,17 +20,17 @@ task task_metaphlan {
     }
 
     command {
-      metaphlan --offline \
+      set -x
+      metaphlan \
       --tax_lev ~{taxonomic_level} \
       --input_type ~{input_type} \
       --nproc ~{nproc} \
       --bowtie2db ~{bowtie2db} \
       --index ~{bowtie2index} \
-      --sample_id ~{sample_name}
+      --sample_id ~{sample_name} \
       -t ~{analysis_type} \
-      -1 ~{read1} \
-      -2 ~{read2}
-      -o ~{output_file_name}
+      -o ~{output_file_name} \
+      ~{read1},~{read2}
     }
 
     output {

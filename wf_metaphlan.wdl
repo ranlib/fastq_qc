@@ -8,7 +8,8 @@ workflow wf_metaphlan {
     String sample_name
     String input_type = "fastq"
     String output_file_name = "metaphlan_output.txt"
-    String bowtie2db = "/path/to/bowtie2db"
+    String bowtie2db
+    String bowtie2index
     String analysis_type = "rel_ab"
     Int nproc = 12
   }
@@ -21,6 +22,7 @@ workflow wf_metaphlan {
     sample_name = sample_name,
     output_file_name = output_file_name,
     bowtie2db = bowtie2db,
+    bowtie2index = bowtie2index,
     analysis_type = analysis_type,
     nproc = nproc
   }
