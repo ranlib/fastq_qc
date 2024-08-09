@@ -34,5 +34,7 @@ workflow wf_fastp {
     File read1_unpaired = task_fastp.unpaired1_file
     File read2_unpaired = task_fastp.unpaired2_file
     File log_file = task_fastp.log_file
+    File html_file = task_fastp.html_file
+    File json_file = task_fastp.json_file
   }
 }

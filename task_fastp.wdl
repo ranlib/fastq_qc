@@ -71,11 +71,13 @@ task task_fastp {
   >>>
   
   output {
-    File out1_file = "${out1}"
-    File out2_file = "${out2}"
-    File unpaired1_file = "${unpaired1}"
-    File unpaired2_file = "${unpaired2}"
-    File log_file = "${log}"
+    File out1_file = out1
+    File out2_file = out2
+    File unpaired1_file = unpaired1
+    File unpaired2_file = unpaired2
+    File log_file = log
+    File json_file = json_report
+    File html_file = html_report
   }
   
   runtime {
