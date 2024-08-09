@@ -13,7 +13,15 @@ task task_fastp {
     
     String memory = "12GB"
     String docker = "dbest/fastp:v0.23.4"
+
     Int threads = 3
+    Int poly_x_min_len = 10
+    Int min_read_length = 50
+    Int n_base_limit = 5
+    Int average_qual = 10 # = 0 means no requirement
+    Int cut_window_size = 4
+    Int cut_mean_quality = 20
+    Int low_complexity_threshold = 30 # 30% is the default
     
     File? adapter_fasta
     
@@ -45,6 +53,16 @@ task task_fastp {
     --detect_adapter_for_pe \
     --unpaired1 ~{unpaired1} \
     --unpaired2 ~{unpaired2} \
+    --trim_poly_x \
+    --poly_x_min_len ~{poly_x_min_len} \
+    --length_required ~{min_read_length} \
+    --n_base_limit ~{n_base_limit} \
+    --low_complexity_filter \
+    --complexity_threshold ~{low_complexity_threshold} \
+    --average_qual ~{average_qual} \
+    --cut_tail \
+    --cut_window_size ~{cut_window_size} \
+    --cut_mean_quality ~{cut_mean_quality} \
     ~{true="--adapter_fasta" false="" defined(adapter_fasta)} "${ADAPTERS}" \
     ~{if verbose then '--verbose' else ''} \
     ~{if deduplication then '--dedup' else ''} \
@@ -65,5 +83,21 @@ task task_fastp {
     memory: memory
     cpu: threads
   }
+
+  meta {
+    description: "run fastp"
+  }
+  
+  parameter_meta {
+    read1: {
+      description: "fastq file with forward reads.",
+      category: "required"
+    }
+    read2: {
+      description: "fastq file with reverse reads.",
+      category: "required"
+    }
+  }
+  
 }
 
