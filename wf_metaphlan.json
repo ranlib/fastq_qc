@@ -10,5 +10,7 @@
     "wf_metaphlan.sample_name": "ERR552797",
     "wf_metaphlan.task_metaphlan.docker": "dbest/metaphlan:v4.1.1",
     "wf_metaphlan.task_metaphlan.memory": "128GB",
+    "wf_metaphlan.task_metaphlan.minimum_read_length": 70,
+    "wf_metaphlan.task_metaphlan.stat": "tavg_g",
     "wf_metaphlan.task_metaphlan.taxonomic_level": "a"
 }
