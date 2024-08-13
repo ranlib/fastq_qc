@@ -1,0 +1,14 @@
+{
+  "wf_recentrifuge.controls_number": "Int",
+  "wf_recentrifuge.docker_image": "String",
+  "wf_recentrifuge.generic_format": "String",
+  "wf_recentrifuge.input_file": "String",
+  "wf_recentrifuge.int_w": "Int",
+  "wf_recentrifuge.number_y": "Int",
+  "wf_recentrifuge.number_z": "Int",
+  "wf_recentrifuge.output_type": "String",
+  "wf_recentrifuge.scoring": "String",
+  "wf_recentrifuge.summary_behavior": "String",
+  "wf_recentrifuge.taxid_i": "Int",
+  "wf_recentrifuge.taxid_x": "Int"
+}
