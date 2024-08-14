@@ -43,4 +43,34 @@ centrifuge:
 	miniwdl check wf_centrifuge.wdl
 
 run_centrifuge:
-	time miniwdl run --dir test-centrifuge --debug --cfg miniwdl_production.cfg -i wf_centrifuge.json wf_centrifuge.wdl
+	#time miniwdl run --dir test-centrifuge --debug --cfg miniwdl_production.cfg -i wf_centrifuge.json wf_centrifuge.wdl
+	time miniwdl run --dir test-centrifuge --debug --cfg miniwdl_production.cfg -i wf_centrifuge_Vaccinia.json wf_centrifuge.wdl	
+
+#
+# kraken2
+#
+kraken2:
+	java -jar ~/Software/womtool-86.jar validate --inputs wf_kraken2_large.json wf_kraken2.wdl
+	time miniwdl check wf_kraken2.wdl
+
+run_kraken2:
+	miniwdl run --dir test-kraken2_large --debug --cfg miniwdl_production.cfg -i wf_kraken2_large.json wf_kraken2.wdl
+
+#
+# recentrifuge
+#
+recentrifuge:
+	java -jar ~/Software/womtool-86.jar validate --inputs wf_recentrifuge.json wf_recentrifuge.wdl
+	time miniwdl check wf_recentrifuge.wdl
+
+run_recentrifuge:
+	miniwdl run --dir test-recentrifuge --debug --cfg miniwdl_production.cfg -i wf_recentrifuge.json wf_recentrifuge.wdl
+
+#
+# multiqc
+#
+multiqc:
+	java -jar ~/Software/womtool-86.jar validate --inputs wf_multiqc.json wf_multiqc.wdl
+	miniwdl check wf_multiqc.wdl
+	wdl-aid wf_multiqc.wdl -o wf_multiqc.md
+
