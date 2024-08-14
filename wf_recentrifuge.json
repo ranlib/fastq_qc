@@ -1,14 +1,10 @@
 {
-  "wf_recentrifuge.controls_number": "Int",
-  "wf_recentrifuge.docker_image": "String",
-  "wf_recentrifuge.generic_format": "String",
-  "wf_recentrifuge.input_file": "String",
-  "wf_recentrifuge.int_w": "Int",
-  "wf_recentrifuge.number_y": "Int",
-  "wf_recentrifuge.number_z": "Int",
-  "wf_recentrifuge.output_type": "String",
-  "wf_recentrifuge.scoring": "String",
-  "wf_recentrifuge.summary_behavior": "String",
-  "wf_recentrifuge.taxid_i": "Int",
-  "wf_recentrifuge.taxid_x": "Int"
+    "wf_recentrifuge.controls_number": 0,
+    "wf_recentrifuge.docker_image": "dbest/recentrifuge:v1.14.1",
+    "wf_recentrifuge.format": "GENERIC_FORMAT",
+    "wf_recentrifuge.input_file": "/home/dbest/Software/wdl/test-centrifuge/_LAST/out/classificationTSV/1M1000643.centrifuge.classification.tsv",
+    "wf_recentrifuge.nodes_dump": "/home/dbest/Software/wdl/taxdump/nodes.dmp",
+    "wf_recentrifuge.names_dump": "/home/dbest/Software/wdl/taxdump/names.dmp",
+    "wf_recentrifuge.outprefix": "1M1000643",
+    "wf_recentrifuge.output_type": "TSV"
 }
