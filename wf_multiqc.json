@@ -1,0 +1,7 @@
+{
+    "wf_multiqc.inputFiles": [
+        "/home/dbest/Software/test-fastp/test-fastp/out/reverseData/fastqc_data.txt",
+    ],
+    "wf_multiqc.outputPrefix": "ERR552797"
+}
+
