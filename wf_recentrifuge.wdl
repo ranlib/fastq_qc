@@ -4,38 +4,29 @@ import "./task_recentrifuge.wdl" as recentrifuge
 
 workflow wf_recentrifuge {
     input {
-        String docker_image
-        String input_file
-        String generic_format
-        String output_type
-        String scoring
-        Int controls_number
-        Int number_y
-        Int taxid_x
-        Int taxid_i
-        Int number_z
-        Int int_w
-        String summary_behavior
+      File input_file
+      File nodes_dump
+      File names_dump
+      String docker_image
+      String format
+      String outprefix
+      String output_type
+      Int controls_number
     }
-
+    
     call recentrifuge.task_recentrifuge {
-        input:
-            docker_image = docker_image,
-            input_file = input_file,
-            output_file = "rcf_output.txt",
-            generic_format = generic_format,
-            output_type = output_type,
-            scoring = scoring,
-            controls_number = controls_number,
-            number_y = number_y,
-            taxid_x = taxid_x,
-            taxid_i = taxid_i,
-            number_z = number_z,
-            int_w = int_w,
-            summary_behavior = summary_behavior
+      input:
+      docker_image = docker_image,
+      input_file = input_file,
+      outprefix = outprefix,
+      format = format,
+      nodes_dump = nodes_dump,
+      names_dump = names_dump,
+      output_type = output_type,
+      controls_number = controls_number
     }
-
+    
     output {
-        File rcf_output = task_recentrifuge.output_file
+        Array[File] rcf_output = task_recentrifuge.outputs
     }
 }
