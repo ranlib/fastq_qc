@@ -1,0 +1,10 @@
+{
+    "wf_bbduk.contamination": "/home/dbest/data/ncbi_dataset/data/GCF_000001405.40/GCF_000001405.40_GRCh38.p14_genomic.fna",
+    "wf_bbduk.forwardReads": "/home/dbest/Analysis/Alex/Vaccinia/data/1M1000643_S14_L001_R1_001.fastq.gz",
+    "wf_bbduk.reverseReads": "/home/dbest/Analysis/Alex/Vaccinia/data/1M1000643_S14_L001_R2_001.fastq.gz",
+    "wf_bbduk.samplename": "1M1000643",
+    "wf_bbduk.threads": 16,
+    "wf_bbduk.task_bbduk.docker": "staphb/bbtools:39.01",
+    "wf_bbduk.memory": "250GB",
+    "wf_bbduk.disk_size": 100
+}
