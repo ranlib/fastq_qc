@@ -7,7 +7,6 @@ task task_bracken {
       String docker = "staphb/bracken:2.9"
       String memory = "250GB"
       String samplename
-      String level = "S"
       Int read_length = 150
       Int threshold = 10
       Int disk_size= 100
@@ -21,7 +20,7 @@ task task_bracken {
       then
           for alevel in P C O F G S S1
           do
-              bracken -d ${PWD}/kraken -i ~{kraken_report} -o ~{samplename}.${alevel}.bracken.report -r ~{read_length} -l ${alevel} -t ~{threshold} &>2
+              bracken -d ${PWD}/kraken -i ~{kraken_report} -o ~{samplename}.${alevel}.bracken.report -r ~{read_length} -l ${alevel} -t ~{threshold}
           done
       else
           touch ~{samplename}.bracken.report
