@@ -54,7 +54,8 @@ kraken2:
 	time miniwdl check wf_kraken2.wdl
 
 run_kraken2:
-	miniwdl run --dir test-kraken2_large --debug --cfg miniwdl_production.cfg -i wf_kraken2_large.json wf_kraken2.wdl
+	#miniwdl run --dir test-kraken2_large --debug --cfg miniwdl_production.cfg -i wf_kraken2_TB.json wf_kraken2.wdl
+	time miniwdl run --dir test-kraken2_large --debug --cfg miniwdl_production.cfg -i wf_kraken2_Vaccinia.json wf_kraken2.wdl	
 
 #
 # recentrifuge
@@ -74,3 +75,24 @@ multiqc:
 	miniwdl check wf_multiqc.wdl
 	wdl-aid wf_multiqc.wdl -o wf_multiqc.md
 
+#
+# bbduk
+#
+bbduk:
+	java -jar ~/Software/womtool-86.jar validate --inputs wf_bbduk.json wf_bbduk.wdl
+	miniwdl check wf_bbduk.wdl
+	wdl-aid wf_bbduk.wdl -o wf_bbduk.md
+
+run_bbduk:
+	time miniwdl run --debug --dir test-bbduk --cfg miniwdl_production.cfg --input wf_bbduk.json wf_bbduk.wdl 
+
+#
+# krakentools
+#
+krakentools:
+	java -jar ~/Software/womtool-86.jar validate --inputs wf_krakentools.json wf_krakentools.wdl
+	miniwdl check wf_krakentools.wdl
+	wdl-aid wf_krakentools.wdl -o wf_krakentools.md
+
+run_krakentools:
+	time miniwdl run --debug --dir test-krakentools --cfg miniwdl_production.cfg --input wf_krakentools.json wf_krakentools.wdl 
