@@ -7,9 +7,9 @@ task task_bracken {
       String docker = "staphb/bracken:2.9"
       String memory = "250GB"
       String samplename
+      String disk_size = "100"
       Int read_length = 150
       Int threshold = 10
-      Int disk_size= 100
     }
 
     command <<<
