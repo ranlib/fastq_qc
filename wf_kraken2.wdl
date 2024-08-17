@@ -14,7 +14,6 @@ workflow wf_kraken2 {
     Int threads = 1
     String memory = "250GB"
     # bracken
-    String level = "S"
     Int read_length = 150
     Int threshold = 10
   }
@@ -40,7 +39,6 @@ workflow wf_kraken2 {
       samplename = samplename,
       database = database,
       memory = memory,
-      level = level,
       read_length = read_length,
       threshold = threshold,
       disk_size = disk_size_gb
