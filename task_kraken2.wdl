@@ -8,8 +8,8 @@ task task_kraken2 {
     String samplename
     String docker = "staphb/kraken2:2.1.3"
     String memory = "250GB"
+    String disk_size = "100"
     Int threads = 1
-    Int disk_size= 100
     Int minimum_base_quality = 20
   }
 
@@ -25,10 +25,13 @@ task task_kraken2 {
     --unclassified-out ~{samplename}.unclassified#.fastq \
     --classified-out ~{samplename}.classified#.fastq \
     --minimum-base-quality ~{minimum_base_quality} \
-    --use-names \
+    --minimum-hit-groups 3 \
+    --report-minimizer-data \
     --gzip-compressed \
     --paired \
     ~{read1} ~{read2}
+
+    gzip ~{samplename}.unclassified*.fastq ~{samplename}.classified*.fastq
   >>>
 
   output {
