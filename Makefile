@@ -96,3 +96,18 @@ krakentools:
 
 run_krakentools:
 	time miniwdl run --debug --dir test-krakentools --cfg miniwdl_production.cfg --input wf_krakentools.json wf_krakentools.wdl 
+
+
+#
+# fastq_qc
+#
+fastq_qc:
+	java -jar ~/Software/womtool-86.jar validate --inputs wf_fastq_qc.json wf_fastq_qc.wdl
+	miniwdl check wf_fastq_qc.wdl
+	wdl-aid wf_fastq_qc.wdl -o wf_fastq_qc.md
+
+run_fastq_qc:
+	time miniwdl run --debug --dir test-fastq_qc --cfg miniwdl_production.cfg --input wf_fastq_qc.json wf_fastq_qc.wdl 
+
+run_fastq_qc_cromwell:
+	java -jar ~/Software/cromwell-86.jar run wf_fastq_qc.wdl -i wf_fastq_qc.json
