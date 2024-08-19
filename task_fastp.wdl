@@ -8,7 +8,7 @@ task task_fastp {
     String out2
     String html_report
     String json_report
-    String sample_name
+    String samplename
     String log
     
     String memory = "12GB"
@@ -30,8 +30,8 @@ task task_fastp {
     Boolean overrepresentation_analysis = false
   }
 
-  String unpaired1 = sample_name + "_unpaired_1.fastq.gz"
-  String unpaired2 = sample_name + "_unpaired_2.fastq.gz"
+  String unpaired1 = samplename + "_unpaired_1.fastq.gz"
+  String unpaired2 = samplename + "_unpaired_2.fastq.gz"
 
   command <<<
     set -x

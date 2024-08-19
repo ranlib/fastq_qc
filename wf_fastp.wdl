@@ -11,13 +11,13 @@ workflow wf_fastp {
     String read2_trimmed
     String json_report
     String html_report
-    String sample_name
+    String samplename
     String log
   }
   
   call task_fastp.task_fastp {
     input:
-    sample_name = sample_name,
+    samplename = samplename,
     read1 = read1,
     read2 = read2,
     adapter_fasta = adapter_fasta,
