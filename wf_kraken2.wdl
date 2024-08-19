@@ -9,10 +9,10 @@ workflow wf_kraken2 {
     File read2
     File database
     String samplename
-    Int disk_size= 100
+    String disk_size = "100"
+    String memory = "250GB"
     Int disk_multiplier = 20
     Int threads = 1
-    String memory = "250GB"
     # bracken
     Int read_length = 150
     Int threshold = 10
@@ -32,23 +32,22 @@ workflow wf_kraken2 {
     disk_size = disk_size_gb
   }
 
-  if ( defined(task_kraken2.krakenReport) ) {
-    call bracken.task_bracken {
-      input:
-      kraken_report = select_first([task_kraken2.krakenReport]),
-      samplename = samplename,
-      database = database,
-      memory = memory,
-      read_length = read_length,
-      threshold = threshold,
-      disk_size = disk_size_gb
-    }
+  call bracken.task_bracken {
+    input:
+    kraken_report = task_kraken2.krakenReport,
+    samplename = samplename,
+    database = database,
+    memory = memory,
+    read_length = read_length,
+    threshold = threshold,
+    disk_size = disk_size_gb
   }
 
   output {
-    File? krakenReport = task_kraken2.krakenReport
-    File? krakenOutput = task_kraken2.krakenOutput
-    Array[File]? brackenReport = task_bracken.bracken_report
+    File krakenReport = task_kraken2.krakenReport
+    File krakenOutput = task_kraken2.krakenOutput
+    File bracken_report_S = task_bracken.bracken_report_S
+    Array[File] brackenReport = task_bracken.bracken_report
     Array[File] unclassified = task_kraken2.unclassified
     Array[File] classified = task_kraken2.classified
   }
