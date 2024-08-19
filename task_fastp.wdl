@@ -71,8 +71,8 @@ task task_fastp {
   >>>
   
   output {
-    File out1_file = out1
-    File out2_file = out2
+    File read1_trimmed = out1
+    File read2_trimmed = out2
     File unpaired1_file = unpaired1
     File unpaired2_file = unpaired2
     File log_file = log

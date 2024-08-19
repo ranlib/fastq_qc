@@ -29,8 +29,8 @@ workflow wf_fastp {
   }
   
   output {
-    File read1_clean = task_fastp.out1_file
-    File read2_clean = task_fastp.out2_file
+    File read1_clean = task_fastp.read1_trimmed
+    File read2_clean = task_fastp.read2_trimmed
     File read1_unpaired = task_fastp.unpaired1_file
     File read2_unpaired = task_fastp.unpaired2_file
     File log_file = task_fastp.log_file
