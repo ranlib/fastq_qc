@@ -14,13 +14,13 @@ task task_bracken {
 
     command <<<
       set -x
-      mkdir -p ${PWD}/kraken
-      tar -C ${PWD}/kraken -xvf ~{database}
+      mkdir -p "${PWD}/kraken"
+      tar -C "${PWD}/kraken" -xvf ~{database}
       if [ -s ~{kraken_report} ]
       then
           for alevel in P C O F G S S1
           do
-              bracken -d ${PWD}/kraken -i ~{kraken_report} -o ~{samplename}.${alevel}.bracken.report -r ~{read_length} -l ${alevel} -t ~{threshold}
+              bracken -d "${PWD}/kraken" -i ~{kraken_report} -o ~{samplename}.${alevel}.bracken.report -r ~{read_length} -l ${alevel} -t ~{threshold}
           done
       else
           touch ~{samplename}.bracken.report
@@ -29,6 +29,7 @@ task task_bracken {
 
     output {
       Array[File] bracken_report = glob("${samplename}.*.bracken.report")
+      File bracken_report_S = samplename + ".S.bracken.report"
     }
     
     runtime {
