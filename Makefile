@@ -111,3 +111,11 @@ run_fastq_qc:
 
 run_fastq_qc_cromwell:
 	java -jar ~/Software/cromwell-86.jar run wf_fastq_qc.wdl -i wf_fastq_qc.json
+
+fastq_qc_docu:
+	wdl-aid wf_fastq_qc.wdl -o wf_fastq_qc.md
+	#grip wf_fastq_qc.md
+	#java -jar ~/Software/womtool-86.jar graph wf_fastq_qc.wdl > wf_fastq_qc.dot
+	#dot -Tpdf -o wf_fastq_qc.pdf wf_fastq_qc.dot
+	#dot -Tjpeg -o wf_fastq_qc.jpeg wf_fastq_qc.dot
+	#rm wf_fastq_qc.dot
