@@ -17,7 +17,7 @@ task task_kreport {
     do
        ln -s ${file} $PWD/"$(basename ${file})"
     done
-    centrifuge-kreport -x $PWD/${indexBasename} ~{classificationTSV} 2> ~{samplename}.centrifuge.classification.kraken_style.err 1> ~{samplename}.centrifuge.classification.kraken_style.tsv
+    centrifuge-kreport -x "$PWD/${indexBasename}" ~{classificationTSV} 2> ~{samplename}.centrifuge.classification.kraken_style.err 1> ~{samplename}.centrifuge.classification.kraken_style.tsv
   >>>
 
   output {

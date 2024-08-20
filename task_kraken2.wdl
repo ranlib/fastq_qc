@@ -15,10 +15,10 @@ task task_kraken2 {
 
   command <<<
     set -x
-    mkdir -p ${PWD}/kraken
-    tar -C ${PWD}/kraken -xvf ~{database}
+    mkdir -p "${PWD}/kraken"
+    tar -C "${PWD}/kraken" -xvf ~{database}
     kraken2 \
-    --db ${PWD}/kraken \
+    --db "${PWD}/kraken" \
     --threads ~{threads} \
     --output ~{samplename}.kraken.output \
     --report ~{samplename}.kraken.report \

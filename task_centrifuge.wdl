@@ -19,7 +19,7 @@ task task_centrifuge {
     do
        ln -s ${file} ${PWD}/"$(basename ${file})"
     done
-    centrifuge -x ${PWD}/${indexBasename} --threads ~{threads} -1 ~{read1} -2 ~{read2} --report-file ~{samplename}.centrifuge.summary.report.tsv -S ~{samplename}.centrifuge.classification.tsv
+    centrifuge -x "${PWD}/${indexBasename}" --threads ~{threads} -1 ~{read1} -2 ~{read2} --report-file ~{samplename}.centrifuge.summary.report.tsv -S ~{samplename}.centrifuge.classification.tsv
     (head -n1 ~{samplename}.centrifuge.summary.report.tsv ; tail -n+2 ~{samplename}.centrifuge.summary.report.tsv | sort -t $'\t' -r -g -k7 ) > ~{samplename}.centrifuge.summary.report.sorted.tsv
   >>>
 
@@ -33,6 +33,12 @@ task task_centrifuge {
     cpu: threads
     memory: memory
     disks: "local-disk " + disk_size + " SSD"
+  }
+
+  meta {
+    author: "Dieter Best"
+    email: "Dieter.Best@cdph.ca.gov"
+    description: "Run centrifuge taxonomy analysis on input fastq files"
   }
 
   parameter_meta {
