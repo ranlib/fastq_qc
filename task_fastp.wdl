@@ -87,7 +87,7 @@ task task_fastp {
   }
 
   meta {
-    description: "run fastp"
+    description: "run fastp adapter and quality trimming"
   }
   
   parameter_meta {
