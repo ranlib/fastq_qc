@@ -1,6 +1,6 @@
 {
   "wf_kraken2.disk_multiplier": 20,
-  "wf_kraken2.disk_size": "100",
+  "wf_kraken2.disk_size": 100,
   "wf_kraken2.indexFiles": [
     "/home/dbest/data/kraken2/k2_standard_20230314/hash.k2d",
     "/home/dbest/data/kraken2/k2_standard_20230314/opts.k2d",

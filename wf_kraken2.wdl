@@ -9,7 +9,7 @@ workflow wf_kraken2 {
     File read2
     File database
     String samplename
-    String disk_size = "100"
+    Int disk_size = 100
     String memory = "250GB"
     Int disk_multiplier = 20
     Int threads = 1

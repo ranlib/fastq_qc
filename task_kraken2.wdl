@@ -8,7 +8,7 @@ task task_kraken2 {
     String samplename
     String docker = "staphb/kraken2:2.1.3"
     String memory = "250GB"
-    String disk_size = "100"
+    Int disk_size = 100
     Int threads = 1
     Int minimum_base_quality = 20
   }
