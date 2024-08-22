@@ -1,5 +1,7 @@
 {
     "wf_fastq_qc.adapter_fasta": "/home/dbest/Software/varpipe4/contamination/adapters.fa.gz",
+    "wf_fastq_qc.bowtie2db": "/home/dbest/mambaforge/envs/analysis/lib/python3.12/site-packages/metaphlan/metaphlan_databases",
+    "wf_fastq_qc.bowtie2index": "mpa_vJun23_CHOCOPhlAnSGB_202403",
     "wf_fastq_qc.bracken_file_filtered": "1M1000643.S.bracken.filtered.report",
     "wf_fastq_qc.indexFiles": [
         "/home/dbest/data/centrifuge/hpvc.1.cf",

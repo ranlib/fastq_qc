@@ -4,6 +4,16 @@
 ## Inputs
 
 ### Required inputs
+<p name="wf_fastq_qc.bowtie2db">
+        <b>wf_fastq_qc.bowtie2db</b><br />
+        <i>String &mdash; Default: None</i><br />
+        ???
+</p>
+<p name="wf_fastq_qc.bowtie2index">
+        <b>wf_fastq_qc.bowtie2index</b><br />
+        <i>String &mdash; Default: None</i><br />
+        ???
+</p>
 <p name="wf_fastq_qc.bracken_file_filtered">
         <b>wf_fastq_qc.bracken_file_filtered</b><br />
         <i>String &mdash; Default: None</i><br />
@@ -143,6 +153,11 @@
         <i>File? &mdash; Default: None</i><br />
         ???
 </p>
+<p name="wf_fastq_qc.analysis_type">
+        <b>wf_fastq_qc.analysis_type</b><br />
+        <i>String &mdash; Default: "rel_ab"</i><br />
+        ???
+</p>
 <p name="wf_fastq_qc.disk_multiplier">
         <b>wf_fastq_qc.disk_multiplier</b><br />
         <i>Int &mdash; Default: 20</i><br />
@@ -153,9 +168,24 @@
         <i>Int &mdash; Default: 100</i><br />
         ???
 </p>
+<p name="wf_fastq_qc.input_type">
+        <b>wf_fastq_qc.input_type</b><br />
+        <i>String &mdash; Default: "fastq"</i><br />
+        ???
+</p>
 <p name="wf_fastq_qc.memory">
         <b>wf_fastq_qc.memory</b><br />
         <i>String &mdash; Default: "250GB"</i><br />
+        ???
+</p>
+<p name="wf_fastq_qc.nproc">
+        <b>wf_fastq_qc.nproc</b><br />
+        <i>Int &mdash; Default: 12</i><br />
+        ???
+</p>
+<p name="wf_fastq_qc.output_file_name">
+        <b>wf_fastq_qc.output_file_name</b><br />
+        <i>String &mdash; Default: "metaphlan_output.txt"</i><br />
         ???
 </p>
 <p name="wf_fastq_qc.read_length">
@@ -253,6 +283,46 @@
         <i>String &mdash; Default: "10GB"</i><br />
         ???
 </p>
+<p name="wf_fastq_qc.task_metaphlan.docker">
+        <b>wf_fastq_qc.task_metaphlan.docker</b><br />
+        <i>String &mdash; Default: "dbest/metaphlan:v4.1.1"</i><br />
+        ???
+</p>
+<p name="wf_fastq_qc.task_metaphlan.memory">
+        <b>wf_fastq_qc.task_metaphlan.memory</b><br />
+        <i>String &mdash; Default: "12GB"</i><br />
+        ???
+</p>
+<p name="wf_fastq_qc.task_metaphlan.minimum_read_length">
+        <b>wf_fastq_qc.task_metaphlan.minimum_read_length</b><br />
+        <i>Int &mdash; Default: 70</i><br />
+        ???
+</p>
+<p name="wf_fastq_qc.task_metaphlan.number_of_reads_used">
+        <b>wf_fastq_qc.task_metaphlan.number_of_reads_used</b><br />
+        <i>Int? &mdash; Default: None</i><br />
+        ???
+</p>
+<p name="wf_fastq_qc.task_metaphlan.stat">
+        <b>wf_fastq_qc.task_metaphlan.stat</b><br />
+        <i>String &mdash; Default: "tavg_g"</i><br />
+        ???
+</p>
+<p name="wf_fastq_qc.task_metaphlan.taxonomic_level">
+        <b>wf_fastq_qc.task_metaphlan.taxonomic_level</b><br />
+        <i>String &mdash; Default: "a"</i><br />
+        ???
+</p>
+<p name="wf_fastq_qc.task_multiqc.docker">
+        <b>wf_fastq_qc.task_multiqc.docker</b><br />
+        <i>String &mdash; Default: "multiqc/multiqc:v1.24"</i><br />
+        ???
+</p>
+<p name="wf_fastq_qc.task_multiqc.memory">
+        <b>wf_fastq_qc.task_multiqc.memory</b><br />
+        <i>String &mdash; Default: "8GB"</i><br />
+        ???
+</p>
 <p name="wf_fastq_qc.task_recentrifuge.docker_image">
         <b>wf_fastq_qc.task_recentrifuge.docker_image</b><br />
         <i>String &mdash; Default: "dbest/recentrifuge:v1.14.1"</i><br />
@@ -334,6 +404,11 @@
 <p name="wf_fastq_qc.log_file">
         <b>wf_fastq_qc.log_file</b><br />
         <i>File</i><br />
+        ???
+</p>
+<p name="wf_fastq_qc.multiqc_report">
+        <b>wf_fastq_qc.multiqc_report</b><br />
+        <i>File?</i><br />
         ???
 </p>
 <p name="wf_fastq_qc.rcf_output">

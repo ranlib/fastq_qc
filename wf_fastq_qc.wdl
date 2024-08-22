@@ -6,6 +6,8 @@ import "./task_extract_kraken_reads.wdl" as extract_reads
 import "./task_filter_bracken_output.wdl" as filter_bracken
 import "./wf_centrifuge.wdl" as centrifuge
 import "./task_recentrifuge.wdl" as recentrifuge
+import "./task_metaphlan.wdl" as metaphlan
+import "./task_multiqc.wdl" as multiqc
 
 workflow wf_fastq_qc {
   input {
@@ -58,6 +60,13 @@ workflow wf_fastq_qc {
     String outprefix
     String output_type
     Int controls_number
+
+    # metaphlan
+    String input_type = "fastq"
+    String output_file_name = "metaphlan_output.txt"
+    String bowtie2db
+    String bowtie2index
+    String analysis_type = "rel_ab"
   }
 
   call fastp.task_fastp {
@@ -101,7 +110,7 @@ workflow wf_fastq_qc {
 
   call filter_bracken.task_filter_bracken_output {
     input:
-    bracken_file = wf_kraken2.bracken_report_S,
+    bracken_file = wf_kraken2.brackenReport[5],
     taxid_exclude = taxid_exclude,
     taxid_include = taxid_include,
     bracken_file_filtered = bracken_file_filtered
@@ -130,10 +139,29 @@ workflow wf_fastq_qc {
     controls_number = controls_number
   }
   
-  # metaphlan
-  
-  # multiqc
-  
+  call metaphlan.task_metaphlan {
+    input:
+    read1 = task_fastp.read1_trimmed,
+    read2 = task_fastp.read2_trimmed,
+    input_type = input_type,
+    samplename = samplename,
+    output_file_name = output_file_name,
+    bowtie2db = bowtie2db,
+    bowtie2index = bowtie2index,
+    analysis_type = analysis_type,
+    nproc = threads
+  }
+
+  #Array[File] allReports = [ task_fastp.json_file, wf_centrifuge.krakenStyleTSV, wf_kraken2.krakenReport, wf_kraken2.bracken_report_S ]
+  Array[File] allReports = [ task_fastp.json_file, wf_kraken2.krakenReport ]
+  if ( length(allReports) > 0 ) {
+    call multiqc.task_multiqc {
+      input:
+      inputFiles = allReports,
+      outputPrefix = samplename
+    }
+  }
+
   output {
     # fastp
     File read1_clean = task_fastp.read1_trimmed
@@ -155,7 +183,7 @@ workflow wf_fastq_qc {
     File read2_output = task_extract_kraken_reads.read2_output
     # bracken filter
     File bracken_filtered = task_filter_bracken_output.output_file
-
+    
     # centrifuge
     File classificationTSV = wf_centrifuge.classificationTSV
     File summaryReportTSV = wf_centrifuge.summaryReportTSV
@@ -163,6 +191,12 @@ workflow wf_fastq_qc {
 
     # recentrifuge
     Array[File] rcf_output = task_recentrifuge.outputs
+
+    # metaphlan
+    File metaphlan_report = task_metaphlan.output_file
+    
+    # multiqc
+    File? multiqc_report = task_multiqc.report
   }
 
 }
