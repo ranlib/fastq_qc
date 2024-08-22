@@ -133,6 +133,36 @@
 ### Advanced inputs
 <details>
 <summary> Show/Hide </summary>
+<p name="wf_fastq_qc.kraken_recentrifuge.docker">
+        <b>wf_fastq_qc.kraken_recentrifuge.docker</b><br />
+        <i>String &mdash; Default: "dbest/recentrifuge:v1.14.1"</i><br />
+        The docker image used for this task. Changing this may result in errors which the developers may choose not to address.
+</p>
+<p name="wf_fastq_qc.kraken_recentrifuge.memory">
+        <b>wf_fastq_qc.kraken_recentrifuge.memory</b><br />
+        <i>String &mdash; Default: "16GB"</i><br />
+        The amount of memory available to the job.
+</p>
+<p name="wf_fastq_qc.task_extract_kraken_reads.docker">
+        <b>wf_fastq_qc.task_extract_kraken_reads.docker</b><br />
+        <i>String &mdash; Default: "dbest/krakentools:v1.2"</i><br />
+        The docker image used for this task. Changing this may result in errors which the developers may choose not to address.
+</p>
+<p name="wf_fastq_qc.task_extract_kraken_reads.memory">
+        <b>wf_fastq_qc.task_extract_kraken_reads.memory</b><br />
+        <i>String &mdash; Default: "10GB"</i><br />
+        The amount of memory available to the job.
+</p>
+<p name="wf_fastq_qc.task_filter_bracken_output.docker">
+        <b>wf_fastq_qc.task_filter_bracken_output.docker</b><br />
+        <i>String &mdash; Default: "dbest/krakentools:v1.2"</i><br />
+        The docker image used for this task. Changing this may result in errors which the developers may choose not to address.
+</p>
+<p name="wf_fastq_qc.task_filter_bracken_output.memory">
+        <b>wf_fastq_qc.task_filter_bracken_output.memory</b><br />
+        <i>String &mdash; Default: "10GB"</i><br />
+        The amount of memory available to the job.
+</p>
 <p name="wf_fastq_qc.task_recentrifuge.docker">
         <b>wf_fastq_qc.task_recentrifuge.docker</b><br />
         <i>String &mdash; Default: "dbest/recentrifuge:v1.14.1"</i><br />
@@ -198,19 +228,14 @@
         <i>Int &mdash; Default: 150</i><br />
         ???
 </p>
+<p name="wf_fastq_qc.run_metaphlan">
+        <b>wf_fastq_qc.run_metaphlan</b><br />
+        <i>Boolean &mdash; Default: false</i><br />
+        ???
+</p>
 <p name="wf_fastq_qc.task_extract_kraken_reads.disk_size">
         <b>wf_fastq_qc.task_extract_kraken_reads.disk_size</b><br />
-        <i>String &mdash; Default: "100"</i><br />
-        ???
-</p>
-<p name="wf_fastq_qc.task_extract_kraken_reads.docker">
-        <b>wf_fastq_qc.task_extract_kraken_reads.docker</b><br />
-        <i>String &mdash; Default: "dbest/krakentools:v1.2"</i><br />
-        ???
-</p>
-<p name="wf_fastq_qc.task_extract_kraken_reads.memory">
-        <b>wf_fastq_qc.task_extract_kraken_reads.memory</b><br />
-        <i>String &mdash; Default: "10GB"</i><br />
+        <i>Int &mdash; Default: 100</i><br />
         ???
 </p>
 <p name="wf_fastq_qc.task_fastp.average_qual">
@@ -275,17 +300,7 @@
 </p>
 <p name="wf_fastq_qc.task_filter_bracken_output.disk_size">
         <b>wf_fastq_qc.task_filter_bracken_output.disk_size</b><br />
-        <i>String &mdash; Default: "100"</i><br />
-        ???
-</p>
-<p name="wf_fastq_qc.task_filter_bracken_output.docker">
-        <b>wf_fastq_qc.task_filter_bracken_output.docker</b><br />
-        <i>String &mdash; Default: "dbest/krakentools:v1.2"</i><br />
-        ???
-</p>
-<p name="wf_fastq_qc.task_filter_bracken_output.memory">
-        <b>wf_fastq_qc.task_filter_bracken_output.memory</b><br />
-        <i>String &mdash; Default: "10GB"</i><br />
+        <i>Int &mdash; Default: 100</i><br />
         ???
 </p>
 <p name="wf_fastq_qc.task_metaphlan.docker">
@@ -408,7 +423,7 @@
 </p>
 <p name="wf_fastq_qc.metaphlan_report">
         <b>wf_fastq_qc.metaphlan_report</b><br />
-        <i>File</i><br />
+        <i>File?</i><br />
         ???
 </p>
 <p name="wf_fastq_qc.multiqc_report">
@@ -418,6 +433,11 @@
 </p>
 <p name="wf_fastq_qc.rcf_output">
         <b>wf_fastq_qc.rcf_output</b><br />
+        <i>Array[File]</i><br />
+        ???
+</p>
+<p name="wf_fastq_qc.rcf_output_kraken">
+        <b>wf_fastq_qc.rcf_output_kraken</b><br />
         <i>Array[File]</i><br />
         ???
 </p>
