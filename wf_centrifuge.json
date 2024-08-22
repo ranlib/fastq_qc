@@ -1,8 +1,8 @@
 {
     "wf_centrifuge.read1": "/home/dbest/Software/varpipe4/data/ERR552797_30percent_1.fq.gz",
     "wf_centrifuge.read2": "/home/dbest/Software/varpipe4/data/ERR552797_30percent_2.fq.gz",
-    "wf_centrifuge.task_centrifuge.docker": "dbest/centrifuge:v1.0.4",
-    "wf_centrifuge.task_kreport.docker": "dbest/centrifuge:v1.0.4",
+    "wf_centrifuge.task_centrifuge.docker": "dbest/centrifuge:v1.0.4.1",
+    "wf_centrifuge.task_kreport.docker": "dbest/centrifuge:v1.0.4.1",
     "wf_centrifuge.indexFiles": [
         "/home/dbest/data/centrifuge/hpvc.1.cf",
         "/home/dbest/data/centrifuge/hpvc.2.cf",

@@ -11,7 +11,7 @@ workflow wf_centrifuge {
     Int threads = 1
     Array[File]+ indexFiles
     String memory = "20GB"
-    Int disk_size= 100
+    Int disk_size = 100
     Int disk_multiplier = 20
   }
   
@@ -28,7 +28,7 @@ workflow wf_centrifuge {
     disk_size = disk_size_gb,
     indexFiles = indexFiles
   }
-  
+
   call kreport.task_kreport {
     input:
     classificationTSV = task_centrifuge.classificationTSV,
@@ -42,6 +42,7 @@ workflow wf_centrifuge {
     File classificationTSV = task_centrifuge.classificationTSV
     File summaryReportTSV = task_centrifuge.summaryReportTSV
     File krakenStyleTSV = task_kreport.krakenStyleTSV
+    File krakenStyleErr = task_kreport.krakenStyleErr
   }
 
   meta {

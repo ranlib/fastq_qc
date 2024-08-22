@@ -7,7 +7,7 @@ task task_centrifuge {
     Array[File]+ indexFiles
     String samplename
     Int threads = 1
-    String docker = "dbest/centrifuge:v1.0.4"
+    String docker = "dbest/centrifuge:v1.0.4.1"
     String memory = "20GB"
     Int disk_size = 100
   }
@@ -17,7 +17,7 @@ task task_centrifuge {
     indexBasename="$(basename ~{sub(indexFiles[0], '\.[0-9]\.cf', '')})"
     for file in ~{sep=" " indexFiles}
     do
-       ln -s ${file} ${PWD}/"$(basename ${file})"
+       ln -s "${file}" "${PWD}/$(basename ${file})"
     done
     centrifuge -x "${PWD}/${indexBasename}" --threads ~{threads} -1 ~{read1} -2 ~{read2} --report-file ~{samplename}.centrifuge.summary.report.tsv -S ~{samplename}.centrifuge.classification.tsv
     (head -n1 ~{samplename}.centrifuge.summary.report.tsv ; tail -n+2 ~{samplename}.centrifuge.summary.report.tsv | sort -t $'\t' -r -g -k7 ) > ~{samplename}.centrifuge.summary.report.sorted.tsv
