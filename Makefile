@@ -42,6 +42,9 @@ centrifuge:
 	java -jar ~/Software/womtool-86.jar validate --inputs wf_centrifuge.json wf_centrifuge.wdl
 	miniwdl check wf_centrifuge.wdl
 
+centrifuge_docu:
+	wdl-aid wf_centrifuge.wdl -o wf_centrifuge.md
+
 run_centrifuge:
 	#time miniwdl run --dir test-centrifuge --debug --cfg miniwdl_production.cfg -i wf_centrifuge.json wf_centrifuge.wdl
 	time miniwdl run --dir test-centrifuge --debug --cfg miniwdl_production.cfg -i wf_centrifuge_Vaccinia.json wf_centrifuge.wdl	
@@ -63,6 +66,9 @@ run_kraken2:
 recentrifuge:
 	java -jar ~/Software/womtool-86.jar validate --inputs wf_recentrifuge.json wf_recentrifuge.wdl
 	time miniwdl check wf_recentrifuge.wdl
+
+recentrifuge_docu:
+	wdl-aid wf_recentrifuge.wdl -o wf_recentrifuge.md
 
 run_recentrifuge:
 	miniwdl run --dir test-recentrifuge --debug --cfg miniwdl_production.cfg -i wf_recentrifuge.json wf_recentrifuge.wdl
