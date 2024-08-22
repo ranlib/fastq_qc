@@ -5,23 +5,24 @@ task task_kreport {
     File classificationTSV
     Array[File]+ indexFiles
     String samplename
-    String docker = "dbest/centrifuge:v1.0.4"
+    String docker = "dbest/centrifuge:v1.0.4.1"
     String memory = "20GB"
     Int disk_size = 100
   }
 
   command <<<
     set -x
-    indexBasename="$(basename ~{sub(indexFiles[0], "\.[0-9]\.cf", "")})"
+    indexBasename="$(basename ~{sub(indexFiles[0], '\.[0-9]\.cf', '')})"
     for file in ~{sep=" " indexFiles}
     do
-       ln -s ${file} $PWD/"$(basename ${file})"
+       ln -s "${file}" "${PWD}/$(basename ${file})"
     done
-    centrifuge-kreport -x "$PWD/${indexBasename}" ~{classificationTSV} 2> ~{samplename}.centrifuge.classification.kraken_style.err 1> ~{samplename}.centrifuge.classification.kraken_style.tsv
+    centrifuge-kreport -x "${PWD}/${indexBasename}" ~{classificationTSV} 2> ~{samplename}.centrifuge.classification.kraken_style.err 1> ~{samplename}.centrifuge.classification.kraken_style.tsv
   >>>
 
   output {
     File krakenStyleTSV = "${samplename}.centrifuge.classification.kraken_style.tsv"
+    File krakenStyleErr = "${samplename}.centrifuge.classification.kraken_style.err"
   }
 
   runtime {
