@@ -43,11 +43,6 @@
         <i>String &mdash; Default: "staphb/bbtools:39.01"</i><br />
         ???
 </p>
-<p name="wf_bbduk.task_bbduk.keep">
-        <b>wf_bbduk.task_bbduk.keep</b><br />
-        <i>Boolean &mdash; Default: true</i><br />
-        ???
-</p>
 <p name="wf_bbduk.task_bbduk.number_of_retries">
         <b>wf_bbduk.task_bbduk.number_of_retries</b><br />
         <i>Int &mdash; Default: 1</i><br />

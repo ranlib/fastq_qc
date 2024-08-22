@@ -44,16 +44,11 @@
         <i>String &mdash; Default: None</i><br />
         ???
 </p>
-
-### Advanced inputs
-<details>
-<summary> Show/Hide </summary>
 <p name="wf_recentrifuge.task_recentrifuge.memory">
         <b>wf_recentrifuge.task_recentrifuge.memory</b><br />
         <i>String &mdash; Default: "16GB"</i><br />
         The amount of memory available to the job.
 </p>
-</details>
 
 ## Outputs
 <p name="wf_recentrifuge.rcf_output">

@@ -60,37 +60,42 @@
         ???
 </p>
 
+### Advanced inputs
+<details>
+<summary> Show/Hide </summary>
+<p name="wf_krakentools.task_extract_kraken_reads.docker">
+        <b>wf_krakentools.task_extract_kraken_reads.docker</b><br />
+        <i>String &mdash; Default: "dbest/krakentools:v1.2"</i><br />
+        The docker image used for this task. Changing this may result in errors which the developers may choose not to address.
+</p>
+<p name="wf_krakentools.task_extract_kraken_reads.memory">
+        <b>wf_krakentools.task_extract_kraken_reads.memory</b><br />
+        <i>String &mdash; Default: "10GB"</i><br />
+        The amount of memory available to the job.
+</p>
+<p name="wf_krakentools.task_filter_bracken_output.docker">
+        <b>wf_krakentools.task_filter_bracken_output.docker</b><br />
+        <i>String &mdash; Default: "dbest/krakentools:v1.2"</i><br />
+        The docker image used for this task. Changing this may result in errors which the developers may choose not to address.
+</p>
+<p name="wf_krakentools.task_filter_bracken_output.memory">
+        <b>wf_krakentools.task_filter_bracken_output.memory</b><br />
+        <i>String &mdash; Default: "10GB"</i><br />
+        The amount of memory available to the job.
+</p>
+</details>
+
 ### Other inputs
 <details>
 <summary> Show/Hide </summary>
 <p name="wf_krakentools.task_extract_kraken_reads.disk_size">
         <b>wf_krakentools.task_extract_kraken_reads.disk_size</b><br />
-        <i>String &mdash; Default: "100"</i><br />
-        ???
-</p>
-<p name="wf_krakentools.task_extract_kraken_reads.docker">
-        <b>wf_krakentools.task_extract_kraken_reads.docker</b><br />
-        <i>String &mdash; Default: "dbest/krakentools:v1.2"</i><br />
-        ???
-</p>
-<p name="wf_krakentools.task_extract_kraken_reads.memory">
-        <b>wf_krakentools.task_extract_kraken_reads.memory</b><br />
-        <i>String &mdash; Default: "10GB"</i><br />
+        <i>Int &mdash; Default: 100</i><br />
         ???
 </p>
 <p name="wf_krakentools.task_filter_bracken_output.disk_size">
         <b>wf_krakentools.task_filter_bracken_output.disk_size</b><br />
-        <i>String &mdash; Default: "100"</i><br />
-        ???
-</p>
-<p name="wf_krakentools.task_filter_bracken_output.docker">
-        <b>wf_krakentools.task_filter_bracken_output.docker</b><br />
-        <i>String &mdash; Default: "dbest/krakentools:v1.2"</i><br />
-        ???
-</p>
-<p name="wf_krakentools.task_filter_bracken_output.memory">
-        <b>wf_krakentools.task_filter_bracken_output.memory</b><br />
-        <i>String &mdash; Default: "10GB"</i><br />
+        <i>Int &mdash; Default: 100</i><br />
         ???
 </p>
 </details>
