@@ -1,6 +1,6 @@
 {
     "wf_recentrifuge.controls_number": 0,
-    "wf_recentrifuge.docker_image": "dbest/recentrifuge:v1.14.1",
+    "wf_recentrifuge.docker": "dbest/recentrifuge:v1.14.1",
     "wf_recentrifuge.format": "GENERIC_FORMAT",
     "wf_recentrifuge.input_file": "/home/dbest/Software/wdl/test-centrifuge/_LAST/out/classificationTSV/1M1000643.centrifuge.classification.tsv",
     "wf_recentrifuge.nodes_dump": "/home/dbest/Software/wdl/taxdump/nodes.dmp",

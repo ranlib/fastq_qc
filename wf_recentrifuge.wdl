@@ -7,7 +7,7 @@ workflow wf_recentrifuge {
       File input_file
       File nodes_dump
       File names_dump
-      String docker_image
+      String docker
       String format
       String outprefix
       String output_type
@@ -16,7 +16,7 @@ workflow wf_recentrifuge {
     
     call recentrifuge.task_recentrifuge {
       input:
-      docker_image = docker_image,
+      docker = docker,
       input_file = input_file,
       outprefix = outprefix,
       format = format,
