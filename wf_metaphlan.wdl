@@ -1,11 +1,11 @@
 version 1.0
-import "./task_metaphlan.wdl" as task_metaphlan
+import "./task_metaphlan.wdl" as metaphlan
 
 workflow wf_metaphlan {
   input {
     File read1
     File read2
-    String sample_name
+    String samplename
     String input_type = "fastq"
     String output_file_name = "metaphlan_output.txt"
     String bowtie2db
@@ -14,12 +14,12 @@ workflow wf_metaphlan {
     Int nproc = 12
   }
   
-  call task_metaphlan.task_metaphlan {
+  call metaphlan.task_metaphlan {
     input:
     read1 = read1,
     read2 = read2,
     input_type = input_type,
-    sample_name = sample_name,
+    samplename = samplename,
     output_file_name = output_file_name,
     bowtie2db = bowtie2db,
     bowtie2index = bowtie2index,

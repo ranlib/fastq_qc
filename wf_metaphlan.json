@@ -7,7 +7,7 @@
     "wf_metaphlan.output_file_name": "metaphlan_output.txt",
     "wf_metaphlan.read1": "/home/dbest/Software/varpipe4/data/ERR552797_30percent_1.fq.gz",
     "wf_metaphlan.read2": "/home/dbest/Software/varpipe4/data/ERR552797_30percent_2.fq.gz",
-    "wf_metaphlan.sample_name": "ERR552797",
+    "wf_metaphlan.samplename": "ERR552797",
     "wf_metaphlan.task_metaphlan.docker": "dbest/metaphlan:v4.1.1",
     "wf_metaphlan.task_metaphlan.memory": "128GB",
     "wf_metaphlan.task_metaphlan.minimum_read_length": 70,

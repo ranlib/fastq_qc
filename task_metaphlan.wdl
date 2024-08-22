@@ -5,14 +5,14 @@ task task_metaphlan {
     File read1
     File read2
     
-    String sample_name
+    String samplename
     String output_file_name
     String bowtie2db
     String bowtie2index
     
     String input_type = "fastq"
     String analysis_type = "rel_ab"
-    String docker = "dbest/metaphlan:v4.1.1",
+    String docker = "dbest/metaphlan:v4.1.1"
     String memory = "12GB"
     String taxonomic_level = "a"
     String stat = "tavg_g"
@@ -22,7 +22,7 @@ task task_metaphlan {
     Int nproc = 12
   }
   
-  String bowtie2out_file_name = sample_name + ".bowtie2out"
+  String bowtie2out_file_name = samplename + ".bowtie2out"
     
   command <<<
     set -x
@@ -36,7 +36,7 @@ task task_metaphlan {
     --stat ~{stat} \
     --bowtie2db ~{bowtie2db} \
     --index ~{bowtie2index} \
-    --sample_id ~{sample_name} \
+    --sample_id ~{samplename} \
     --bowtie2out ~{bowtie2out_file_name} \
     --output_file ~{output_file_name} \
     -1 ~{read1} -2 ~{read2}
