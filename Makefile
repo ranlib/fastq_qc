@@ -56,6 +56,9 @@ kraken2:
 	java -jar ~/Software/womtool-86.jar validate --inputs wf_kraken2_large.json wf_kraken2.wdl
 	time miniwdl check wf_kraken2.wdl
 
+kraken2_docu:
+	wdl-aid wf_kraken2.wdl -o wf_kraken2.md
+
 run_kraken2:
 	#miniwdl run --dir test-kraken2_large --debug --cfg miniwdl_production.cfg -i wf_kraken2_TB.json wf_kraken2.wdl
 	time miniwdl run --dir test-kraken2_large --debug --cfg miniwdl_production.cfg -i wf_kraken2_Vaccinia.json wf_kraken2.wdl	
@@ -89,6 +92,9 @@ bbduk:
 	miniwdl check wf_bbduk.wdl
 	wdl-aid wf_bbduk.wdl -o wf_bbduk.md
 
+bbduk_docu:
+	wdl-aid wf_bbduk.wdl -o wf_bbduk.md
+
 run_bbduk:
 	time miniwdl run --debug --dir test-bbduk --cfg miniwdl_production.cfg --input wf_bbduk.json wf_bbduk.wdl 
 
@@ -98,6 +104,9 @@ run_bbduk:
 krakentools:
 	java -jar ~/Software/womtool-86.jar validate --inputs wf_krakentools.json wf_krakentools.wdl
 	miniwdl check wf_krakentools.wdl
+	wdl-aid wf_krakentools.wdl -o wf_krakentools.md
+
+krakentools_docu:
 	wdl-aid wf_krakentools.wdl -o wf_krakentools.md
 
 run_krakentools:
