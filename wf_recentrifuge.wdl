@@ -11,7 +11,9 @@ workflow wf_recentrifuge {
       String format
       String outprefix
       String output_type
+      String input_type
       Int controls_number
+      Int taxid
     }
     
     call recentrifuge.task_recentrifuge {
@@ -23,7 +25,9 @@ workflow wf_recentrifuge {
       nodes_dump = nodes_dump,
       names_dump = names_dump,
       output_type = output_type,
-      controls_number = controls_number
+      input_type = input_type,
+      controls_number = controls_number,
+      taxid = taxid
     }
     
     output {

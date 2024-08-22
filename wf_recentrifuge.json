@@ -6,5 +6,7 @@
     "wf_recentrifuge.nodes_dump": "/home/dbest/Software/wdl/taxdump/nodes.dmp",
     "wf_recentrifuge.names_dump": "/home/dbest/Software/wdl/taxdump/names.dmp",
     "wf_recentrifuge.outprefix": "1M1000643",
-    "wf_recentrifuge.output_type": "TSV"
+    "wf_recentrifuge.output_type": "TSV",
+    "wf_recentrifuge.input_type": "centrifuge",
+    "wf_recentrifuge.taxid":  9606
 }
