@@ -62,6 +62,7 @@ workflow wf_fastq_qc {
     Int controls_number
 
     # metaphlan
+    Boolean run_metaphlan = false
     String input_type = "fastq"
     String output_file_name = "metaphlan_output.txt"
     String bowtie2db
@@ -136,22 +137,39 @@ workflow wf_fastq_qc {
     nodes_dump = nodes_dump,
     names_dump = names_dump,
     output_type = output_type,
-    controls_number = controls_number
-  }
-  
-  call metaphlan.task_metaphlan {
-    input:
-    read1 = task_fastp.read1_trimmed,
-    read2 = task_fastp.read2_trimmed,
-    input_type = input_type,
-    samplename = samplename,
-    output_file_name = output_file_name,
-    bowtie2db = bowtie2db,
-    bowtie2index = bowtie2index,
-    analysis_type = analysis_type,
-    nproc = threads
+    input_type = "centrifuge",
+    controls_number = controls_number,
+    taxid = taxid[0]
   }
 
+  call recentrifuge.task_recentrifuge as kraken_recentrifuge {
+    input:
+    input_file = wf_kraken2.krakenOutput,
+    outprefix = outprefix,
+    format = format,
+    nodes_dump = nodes_dump,
+    names_dump = names_dump,
+    output_type = output_type,
+    input_type = "kraken2",
+    controls_number = controls_number,
+    taxid = taxid[0]
+  }
+
+  if ( run_metaphlan ) {
+    call metaphlan.task_metaphlan {
+      input:
+      read1 = task_fastp.read1_trimmed,
+      read2 = task_fastp.read2_trimmed,
+      input_type = input_type,
+      samplename = samplename,
+      output_file_name = output_file_name,
+      bowtie2db = bowtie2db,
+      bowtie2index = bowtie2index,
+      analysis_type = analysis_type,
+      nproc = threads
+    }
+  }
+  
   #Array[File] allReports = [ task_fastp.json_file, wf_centrifuge.krakenStyleTSV, wf_kraken2.krakenReport, wf_kraken2.bracken_report_S ]
   Array[File] allReports = [ task_fastp.json_file, wf_kraken2.krakenReport ]
   if ( length(allReports) > 0 ) {
@@ -171,6 +189,7 @@ workflow wf_fastq_qc {
     File log_file = task_fastp.log_file
     File html_file = task_fastp.html_file
     File json_file = task_fastp.json_file
+    
     # kraken2
     File krakenReport = wf_kraken2.krakenReport
     File krakenOutput = wf_kraken2.krakenOutput
@@ -191,9 +210,10 @@ workflow wf_fastq_qc {
 
     # recentrifuge
     Array[File] rcf_output = task_recentrifuge.outputs
+    Array[File] rcf_output_kraken = kraken_recentrifuge.outputs
 
     # metaphlan
-    File metaphlan_report = task_metaphlan.output_file
+    File? metaphlan_report = task_metaphlan.output_file
     
     # multiqc
     File? multiqc_report = task_multiqc.report
