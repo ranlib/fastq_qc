@@ -133,9 +133,19 @@
 ### Advanced inputs
 <details>
 <summary> Show/Hide </summary>
+<p name="wf_fastq_qc.task_recentrifuge.docker">
+        <b>wf_fastq_qc.task_recentrifuge.docker</b><br />
+        <i>String &mdash; Default: "dbest/recentrifuge:v1.14.1"</i><br />
+        The docker image used for this task. Changing this may result in errors which the developers may choose not to address.
+</p>
+<p name="wf_fastq_qc.task_recentrifuge.memory">
+        <b>wf_fastq_qc.task_recentrifuge.memory</b><br />
+        <i>String &mdash; Default: "16GB"</i><br />
+        The amount of memory available to the job.
+</p>
 <p name="wf_fastq_qc.wf_centrifuge.task_centrifuge.docker">
         <b>wf_fastq_qc.wf_centrifuge.task_centrifuge.docker</b><br />
-        <i>String &mdash; Default: "dbest/centrifuge:v1.0.4"</i><br />
+        <i>String &mdash; Default: "dbest/centrifuge:v1.0.4.1"</i><br />
         The docker image used for this task. Changing this may result in errors which the developers may choose not to address.
 </p>
 <p name="wf_fastq_qc.wf_kraken2.task_kraken2.docker">
@@ -176,11 +186,6 @@
 <p name="wf_fastq_qc.memory">
         <b>wf_fastq_qc.memory</b><br />
         <i>String &mdash; Default: "250GB"</i><br />
-        ???
-</p>
-<p name="wf_fastq_qc.nproc">
-        <b>wf_fastq_qc.nproc</b><br />
-        <i>Int &mdash; Default: 12</i><br />
         ???
 </p>
 <p name="wf_fastq_qc.output_file_name">
@@ -323,11 +328,6 @@
         <i>String &mdash; Default: "8GB"</i><br />
         ???
 </p>
-<p name="wf_fastq_qc.task_recentrifuge.docker_image">
-        <b>wf_fastq_qc.task_recentrifuge.docker_image</b><br />
-        <i>String &mdash; Default: "dbest/recentrifuge:v1.14.1"</i><br />
-        ???
-</p>
 <p name="wf_fastq_qc.threads">
         <b>wf_fastq_qc.threads</b><br />
         <i>Int &mdash; Default: 1</i><br />
@@ -340,7 +340,7 @@
 </p>
 <p name="wf_fastq_qc.wf_centrifuge.task_kreport.docker">
         <b>wf_fastq_qc.wf_centrifuge.task_kreport.docker</b><br />
-        <i>String &mdash; Default: "dbest/centrifuge:v1.0.4"</i><br />
+        <i>String &mdash; Default: "dbest/centrifuge:v1.0.4.1"</i><br />
         ???
 </p>
 <p name="wf_fastq_qc.wf_kraken2.task_bracken.docker">
@@ -403,6 +403,11 @@
 </p>
 <p name="wf_fastq_qc.log_file">
         <b>wf_fastq_qc.log_file</b><br />
+        <i>File</i><br />
+        ???
+</p>
+<p name="wf_fastq_qc.metaphlan_report">
+        <b>wf_fastq_qc.metaphlan_report</b><br />
         <i>File</i><br />
         ???
 </p>
