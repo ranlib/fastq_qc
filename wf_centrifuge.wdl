@@ -8,9 +8,7 @@ workflow wf_centrifuge {
     File read1
     File read2
     String samplename
-    Int threads = 1
     Array[File]+ indexFiles
-    String memory = "20GB"
     Int disk_size = 100
     Int disk_multiplier = 20
   }
@@ -23,8 +21,6 @@ workflow wf_centrifuge {
     read1 = read1,
     read2 = read2,
     samplename = samplename,
-    threads = threads,
-    memory = memory,
     disk_size = disk_size_gb,
     indexFiles = indexFiles
   }
@@ -33,7 +29,6 @@ workflow wf_centrifuge {
     input:
     classificationTSV = task_centrifuge.classificationTSV,
     samplename = samplename,
-    memory = memory,
     disk_size = disk_size_gb,
     indexFiles = indexFiles
   }
