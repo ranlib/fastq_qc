@@ -3,14 +3,16 @@ version 1.0
 task task_filter_bracken_output {
   input {
     File bracken_file
-    Array[Int] taxid_exclude
-    Array[Int] taxid_include
-    String bracken_file_filtered
+    Array[Int] taxid_exclude = []
+    Array[Int] taxid_include = []
+    String samplename
     String docker = "dbest/krakentools:v1.2"
     String memory = "10GB"
     Int disk_size = 100
   }
 
+  String bracken_file_filtered = samplename + ".bracken.filtered.report"
+  
   command <<<
     set -ex
     filter_bracken.out.py \
@@ -39,7 +41,6 @@ task task_filter_bracken_output {
   parameter_meta {
     # inputs
     bracken_file: {description: "Classification result from bracken.", category: "required"}
-    bracken_file_filtered: {description: "Name of output file.", category: "required"}
     taxid_exclude: {description: "List of taxids to be included or excluded. Can be empty list.", category: "required"}
     taxid_include: {description: "List of taxids to be included or excluded. Can be empty list.", category: "required"}
 

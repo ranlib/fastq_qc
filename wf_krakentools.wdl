@@ -9,35 +9,25 @@ workflow wf_krakentools {
     File kraken_file
     File read1
     File read2
-    Array[Int] taxid
-    String read1_out
-    String read2_out
-    Boolean exclude
 
+    String samplename
+    
     # bracken
     File bracken_file
-    Array[Int] taxid_exclude
-    Array[Int] taxid_include
-    String bracken_file_filtered
   }
 
   call extract_reads.task_extract_kraken_reads {
     input:
     kraken_file = kraken_file,
-    taxid = taxid,
+    samplename = samplename,
     read1 = read1,
-    read2 = read2,
-    read1_out = read1_out,
-    read2_out = read2_out,
-    exclude = exclude
+    read2 = read2
   }
 
   call filter_bracken.task_filter_bracken_output {
     input:
     bracken_file = bracken_file,
-    taxid_exclude = taxid_exclude,
-    taxid_include = taxid_include,
-    bracken_file_filtered = bracken_file_filtered
+    samplename = samplename
   }
   
   output {

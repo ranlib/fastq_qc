@@ -1,19 +1,17 @@
 {
-    "wf_krakentools.bracken_file": "/home/dbest/Software/wdl/test-kraken2_large/_LAST/out/brackenReport/5/1M1000643.S.bracken.report",
-    "wf_krakentools.bracken_file_filtered": "1M1000643.S.bracken.filtered.report",
-    "wf_krakentools.exclude": true,
-    "wf_krakentools.kraken_file": "/home/dbest/Software/wdl/test-kraken2_large/_LAST/out/krakenOutput/1M1000643.kraken.output",
+    "wf_krakentools.bracken_file": "/home/dbest/Software/wdl/test-kraken2_Vaccinia/_LAST/out/brackenReport/5/1M1000643.S.bracken.report",
+    "wf_krakentools.kraken_file": "/home/dbest/Software/wdl/test-kraken2_Vaccinia/_LAST/out/krakenOutput/1M1000643.kraken.output",
     "wf_krakentools.read1": "/home/dbest/Analysis/Alex/Vaccinia/data/1M1000643_S14_L001_R1_001.fastq.gz",
     "wf_krakentools.read2": "/home/dbest/Analysis/Alex/Vaccinia/data/1M1000643_S14_L001_R2_001.fastq.gz",
-    "wf_krakentools.read1_out": "1M1000643_1.fastq",
-    "wf_krakentools.read2_out": "1M1000643_2.fastq",
-    "wf_krakentools.task_extract_kraken_reads.disk_size": "100",
+    "wf_krakentools.samplename": "1M1000643",
+    "wf_krakentools.task_extract_kraken_reads.disk_size": 100,
     "wf_krakentools.task_extract_kraken_reads.docker": "dbest/krakentools:v1.2",
+    "wf_krakentools.task_extract_kraken_reads.exclude": true,
     "wf_krakentools.task_extract_kraken_reads.memory": "10GB",
-    "wf_krakentools.task_filter_bracken_output.disk_size": "100",
+    "wf_krakentools.task_extract_kraken_reads.taxid": [ 10244 ],
+    "wf_krakentools.task_filter_bracken_output.disk_size": 100,
     "wf_krakentools.task_filter_bracken_output.docker": "dbest/krakentools:v1.2",
     "wf_krakentools.task_filter_bracken_output.memory": "10GB",
-    "wf_krakentools.taxid": [ 9606, 10244 ],
-    "wf_krakentools.taxid_exclude":  [ 9606, 10244 ],
-    "wf_krakentools.taxid_include": []
+    "wf_krakentools.task_filter_bracken_output.taxid_exclude": [ 9606 ],
+    "wf_krakentools.task_filter_bracken_output.taxid_include": []
 }

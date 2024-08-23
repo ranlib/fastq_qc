@@ -5,15 +5,17 @@ task task_extract_kraken_reads {
     File kraken_file
     File read1
     File read2
-    Array[Int] taxid # list of taxids to include or exclude
-    String read1_out
-    String read2_out
+    Array[Int] taxid = [] # list of taxids to include or exclude
+    String samplename
     String docker = "dbest/krakentools:v1.2"
     String memory = "10GB"
     Int disk_size = 100
     Boolean exclude = false
   }
 
+  String read1_out = samplename + "_1.fastq"
+  String read2_out = samplename + "_2.fastq"
+  
   command <<<
     set -ex 
 

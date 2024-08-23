@@ -9,11 +9,6 @@
         <i>File &mdash; Default: None</i><br />
         ???
 </p>
-<p name="wf_krakentools.bracken_file_filtered">
-        <b>wf_krakentools.bracken_file_filtered</b><br />
-        <i>String &mdash; Default: None</i><br />
-        ???
-</p>
 <p name="wf_krakentools.exclude">
         <b>wf_krakentools.exclude</b><br />
         <i>Boolean &mdash; Default: None</i><br />
@@ -29,18 +24,13 @@
         <i>File &mdash; Default: None</i><br />
         ???
 </p>
-<p name="wf_krakentools.read1_out">
-        <b>wf_krakentools.read1_out</b><br />
-        <i>String &mdash; Default: None</i><br />
-        ???
-</p>
 <p name="wf_krakentools.read2">
         <b>wf_krakentools.read2</b><br />
         <i>File &mdash; Default: None</i><br />
         ???
 </p>
-<p name="wf_krakentools.read2_out">
-        <b>wf_krakentools.read2_out</b><br />
+<p name="wf_krakentools.samplename">
+        <b>wf_krakentools.samplename</b><br />
         <i>String &mdash; Default: None</i><br />
         ???
 </p>
