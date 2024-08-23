@@ -1,14 +1,19 @@
 {
     "wf_fastp.adapter_fasta": "/home/dbest/Software/varpipe4/contamination/adapters.fa.gz",
-    "wf_fastp.html_report": "ERR552797_report.html",
-    "wf_fastp.json_report": "ERR552797_report.json",
-    "wf_fastp.log": "ERR552797.log",
     "wf_fastp.read1": "/home/dbest/Software/varpipe4/data/ERR552797_30percent_1.fq.gz",
-    "wf_fastp.read1_trimmed": "ERR552797_trimmed_1.fastq.gz",
     "wf_fastp.read2": "/home/dbest/Software/varpipe4/data/ERR552797_30percent_2.fq.gz",
-    "wf_fastp.read2_trimmed": "ERR552797_trimmed_2.fastq.gz",
     "wf_fastp.samplename": "ERR552797",
+    "wf_fastp.task_fastp.average_qual": 10,
+    "wf_fastp.task_fastp.cut_mean_quality": 20,
+    "wf_fastp.task_fastp.cut_window_size": 4,
+    "wf_fastp.task_fastp.deduplication": false,
     "wf_fastp.task_fastp.docker": "dbest/fastp:v0.23.4",
+    "wf_fastp.task_fastp.low_complexity_threshold": 30,
     "wf_fastp.task_fastp.memory": "12GB",
-    "wf_fastp.task_fastp.threads": 3
+    "wf_fastp.task_fastp.min_read_length": 50,
+    "wf_fastp.task_fastp.n_base_limit": 5,
+    "wf_fastp.task_fastp.overrepresentation_analysis": false,
+    "wf_fastp.task_fastp.poly_x_min_len": 10,
+    "wf_fastp.task_fastp.threads": 32,
+    "wf_fastp.task_fastp.verbose": false
 }
