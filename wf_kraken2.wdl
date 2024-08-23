@@ -10,12 +10,7 @@ workflow wf_kraken2 {
     File database
     String samplename
     Int disk_size = 100
-    String memory = "250GB"
     Int disk_multiplier = 20
-    Int threads = 1
-    # bracken
-    Int read_length = 150
-    Int threshold = 10
   }
 
   Int dynamic_disk_size = disk_multiplier*ceil(size(read1, "GiB"))
@@ -26,8 +21,6 @@ workflow wf_kraken2 {
     read1 = read1,
     read2 = read2,
     samplename = samplename,
-    threads = threads,
-    memory = memory,
     database = database,
     disk_size = disk_size_gb
   }
@@ -37,9 +30,6 @@ workflow wf_kraken2 {
     kraken_report = task_kraken2.krakenReport,
     samplename = samplename,
     database = database,
-    memory = memory,
-    read_length = read_length,
-    threshold = threshold,
     disk_size = disk_size_gb
   }
 
