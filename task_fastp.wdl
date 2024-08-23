@@ -4,17 +4,12 @@ task task_fastp {
   input {
     File read1
     File read2
-    String out1
-    String out2
-    String html_report
-    String json_report
     String samplename
-    String log
     
     String memory = "12GB"
     String docker = "dbest/fastp:v0.23.4"
 
-    Int threads = 3
+    Int threads = 12
     Int poly_x_min_len = 10
     Int min_read_length = 50
     Int n_base_limit = 5
@@ -32,6 +27,11 @@ task task_fastp {
 
   String unpaired1 = samplename + "_unpaired_1.fastq.gz"
   String unpaired2 = samplename + "_unpaired_2.fastq.gz"
+  String trimmed1 = samplename + "_trimmed_1.fastq.gz"
+  String trimmed2 = samplename + "_trimmed_2.fastq.gz"
+  String html_report = samplename + ".html"
+  String json_report = samplename + ".json"
+  String log = samplename + ".log"
 
   command <<<
     set -x
@@ -45,8 +45,8 @@ task task_fastp {
     fi
     
     fastp --in1 ~{read1} --in2 ~{read2} \
-    --out1 ~{out1} \
-    --out2 ~{out2} \
+    --out1 ~{trimmed1} \
+    --out2 ~{trimmed2} \
     --json ~{json_report} \
     --html ~{html_report} \
     --thread ~{threads} \
@@ -71,8 +71,8 @@ task task_fastp {
   >>>
   
   output {
-    File read1_trimmed = out1
-    File read2_trimmed = out2
+    File read1_trimmed = trimmed1
+    File read2_trimmed = trimmed2
     File unpaired1_file = unpaired1
     File unpaired2_file = unpaired2
     File log_file = log
