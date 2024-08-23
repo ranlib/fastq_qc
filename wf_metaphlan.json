@@ -1,16 +1,15 @@
 {
-    "wf_metaphlan.analysis_type": "rel_ab",
     "wf_metaphlan.bowtie2db": "/home/dbest/mambaforge/envs/analysis/lib/python3.12/site-packages/metaphlan/metaphlan_databases",
     "wf_metaphlan.bowtie2index": "mpa_vJun23_CHOCOPhlAnSGB_202403",
-    "wf_metaphlan.input_type": "fastq",
-    "wf_metaphlan.nproc": 12,
-    "wf_metaphlan.output_file_name": "metaphlan_output.txt",
     "wf_metaphlan.read1": "/home/dbest/Software/varpipe4/data/ERR552797_30percent_1.fq.gz",
     "wf_metaphlan.read2": "/home/dbest/Software/varpipe4/data/ERR552797_30percent_2.fq.gz",
     "wf_metaphlan.samplename": "ERR552797",
+    "wf_metaphlan.task_metaphlan.analysis_type": "rel_ab",
     "wf_metaphlan.task_metaphlan.docker": "dbest/metaphlan:v4.1.1",
-    "wf_metaphlan.task_metaphlan.memory": "128GB",
+    "wf_metaphlan.task_metaphlan.input_type": "fastq",
+    "wf_metaphlan.task_metaphlan.memory": "12GB",
     "wf_metaphlan.task_metaphlan.minimum_read_length": 70,
     "wf_metaphlan.task_metaphlan.stat": "tavg_g",
-    "wf_metaphlan.task_metaphlan.taxonomic_level": "a"
+    "wf_metaphlan.task_metaphlan.taxonomic_level": "a",
+    "wf_metaphlan.task_metaphlan.threads": 12
 }

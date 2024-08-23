@@ -6,7 +6,6 @@ task task_metaphlan {
     File read2
     
     String samplename
-    String output_file_name
     String bowtie2db
     String bowtie2index
     
@@ -19,10 +18,11 @@ task task_metaphlan {
     
     Int minimum_read_length = 70 # default
     Int? number_of_reads_used
-    Int nproc = 12
+    Int threads = 12
   }
   
   String bowtie2out_file_name = samplename + ".bowtie2out"
+  String output_file_name = samplename + ".metaphlan.report"
     
   command <<<
     set -x
@@ -32,7 +32,7 @@ task task_metaphlan {
     --read_min_len ~{minimum_read_length} \
     --tax_lev ~{taxonomic_level} \
     --input_type ~{input_type} \
-    --nproc ~{nproc} \
+    --nproc ~{threads} \
     --stat ~{stat} \
     --bowtie2db ~{bowtie2db} \
     --index ~{bowtie2index} \
@@ -49,7 +49,7 @@ task task_metaphlan {
   runtime {
       docker: docker
       memory: memory
-      cpu: nproc
+      cpu: threads
   }
 
   meta {
