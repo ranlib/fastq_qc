@@ -13,6 +13,20 @@ run_fastqc:
 	miniwdl run --debug --dir test-fastqc_negative_control --cfg miniwdl_production.cfg  --input wf_fastqc_negative_control.json wf_fastqc.wdl	
 
 #
+# seqkit
+#
+seqkit:
+	java -jar ~/Software/womtool-86.jar validate --inputs wf_seqkit_stats.json wf_seqkit_stats.wdl
+	miniwdl check wf_seqkit_stats.wdl
+
+seqkit_docu:
+	wdl-aid wf_seqkit_stats.wdl -o wf_seqkit_stats.md
+
+run_seqkit:
+	miniwdl run --debug --dir test-seqkit --cfg miniwdl_production.cfg --input wf_seqkit_stats.json wf_seqkit_stats.wdl
+
+
+#
 # fastp
 #
 fastp:
@@ -21,11 +35,6 @@ fastp:
 
 fastp_docu:
 	wdl-aid wf_fastp.wdl -o wf_fastp.md
-	#grip wf_fastp.md
-	#java -jar ~/Software/womtool-86.jar graph wf_fastp.wdl > wf_fastp.dot
-	#dot -Tpdf -o wf_fastp.pdf wf_fastp.dot
-	#dot -Tjpeg -o wf_fastp.jpeg wf_fastp.dot
-	#rm wf_fastp.dot
 
 run_fastp:
 	time miniwdl run --debug --dir test-fastp --cfg miniwdl_production.cfg --input wf_fastp.json wf_fastp.wdl

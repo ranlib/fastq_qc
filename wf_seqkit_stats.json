@@ -1,0 +1,8 @@
+{
+    "SeqKitWorkflow.input_files": [ "/home/dieterbest/Analysis/varpipe4/data/ERR552797_30percent_1.fq.gz","/home/dieterbest/Analysis/varpipe4/data/ERR552797_30percent_2.fq.gz"],
+    "SeqKitWorkflow.out_file": "seqkit_stats.txt",
+    "SeqKitWorkflow.seq_type": "auto",
+    "SeqKitWorkflow.tabular": true,
+    "SeqKitWorkflow.basename": true,
+    "SeqKitWorkflow.threads": 4
+}
