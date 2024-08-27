@@ -1,4 +1,18 @@
 #
+# fastqc
+#
+fastqc:
+	java -jar ~/Software/womtool-86.jar validate --inputs wf_fastqc.json wf_fastqc.wdl
+	miniwdl check wf_fastqc.wdl
+
+fastqc_docu:
+	wdl-aid wf_fastqc.wdl -o wf_fastqc.md
+
+run_fastqc:
+	#miniwdl run --debug --dir test-fastqc --cfg miniwdl_production.cfg  --input wf_fastqc.json wf_fastqc.wdl
+	miniwdl run --debug --dir test-fastqc_negative_control --cfg miniwdl_production.cfg  --input wf_fastqc_negative_control.json wf_fastqc.wdl	
+
+#
 # fastp
 #
 fastp:
@@ -15,6 +29,7 @@ fastp_docu:
 
 run_fastp:
 	time miniwdl run --debug --dir test-fastp --cfg miniwdl_production.cfg --input wf_fastp.json wf_fastp.wdl
+	time miniwdl run --debug --dir test-fastp_negative_control --cfg miniwdl_production.cfg --input wf_fastp_negative_control.json wf_fastp.wdl
 
 #
 # metaphlan
@@ -47,21 +62,24 @@ centrifuge_docu:
 
 run_centrifuge:
 	#time miniwdl run --dir test-centrifuge --debug --cfg miniwdl_production.cfg -i wf_centrifuge.json wf_centrifuge.wdl
-	time miniwdl run --dir test-centrifuge --debug --cfg miniwdl_production.cfg -i wf_centrifuge_Vaccinia.json wf_centrifuge.wdl	
+	#time miniwdl run --dir test-centrifuge_Vaccinia --debug --cfg miniwdl_production.cfg -i wf_centrifuge_Vaccinia.json wf_centrifuge.wdl
+	time miniwdl run --dir test-centrifuge_negative_control --debug --cfg miniwdl_production.cfg -i wf_centrifuge_negative_control.json wf_centrifuge.wdl	
 
 #
 # kraken2
 #
 kraken2:
-	java -jar ~/Software/womtool-86.jar validate --inputs wf_kraken2_large.json wf_kraken2.wdl
+	#java -jar ~/Software/womtool-86.jar validate --inputs wf_kraken2_large.json wf_kraken2.wdl
+	java -jar ~/Software/womtool-86.jar validate --inputs wf_kraken2.json wf_kraken2.wdl	
 	time miniwdl check wf_kraken2.wdl
 
 kraken2_docu:
 	wdl-aid wf_kraken2.wdl -o wf_kraken2.md
 
 run_kraken2:
-	#miniwdl run --dir test-kraken2_large --debug --cfg miniwdl_production.cfg -i wf_kraken2_TB.json wf_kraken2.wdl
-	time miniwdl run --dir test-kraken2_large --debug --cfg miniwdl_production.cfg -i wf_kraken2_Vaccinia.json wf_kraken2.wdl	
+	#time miniwdl run --dir test-kraken2_Vaccinia --debug --cfg miniwdl_production.cfg -i wf_kraken2_Vaccinia.json wf_kraken2.wdl
+	#time miniwdl run --dir test-kraken2_TB --debug --cfg miniwdl_production.cfg -i wf_kraken2.json wf_kraken2.wdl		
+	time miniwdl run --dir test-kraken2_negative_control --debug --cfg miniwdl_production.cfg -i wf_kraken2_negative_control.json wf_kraken2.wdl
 
 #
 # recentrifuge
@@ -90,7 +108,6 @@ multiqc:
 bbduk:
 	java -jar ~/Software/womtool-86.jar validate --inputs wf_bbduk.json wf_bbduk.wdl
 	miniwdl check wf_bbduk.wdl
-	wdl-aid wf_bbduk.wdl -o wf_bbduk.md
 
 bbduk_docu:
 	wdl-aid wf_bbduk.wdl -o wf_bbduk.md
@@ -104,7 +121,6 @@ run_bbduk:
 krakentools:
 	java -jar ~/Software/womtool-86.jar validate --inputs wf_krakentools.json wf_krakentools.wdl
 	miniwdl check wf_krakentools.wdl
-	wdl-aid wf_krakentools.wdl -o wf_krakentools.md
 
 krakentools_docu:
 	wdl-aid wf_krakentools.wdl -o wf_krakentools.md
@@ -119,7 +135,6 @@ run_krakentools:
 fastq_qc:
 	java -jar ~/Software/womtool-86.jar validate --inputs wf_fastq_qc.json wf_fastq_qc.wdl
 	miniwdl check wf_fastq_qc.wdl
-	wdl-aid wf_fastq_qc.wdl -o wf_fastq_qc.md
 
 run_fastq_qc:
 	time miniwdl run --debug --dir test-fastq_qc --cfg miniwdl_production.cfg --input wf_fastq_qc.json wf_fastq_qc.wdl 
