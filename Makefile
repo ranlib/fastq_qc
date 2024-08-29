@@ -37,7 +37,7 @@ fastp_docu:
 	wdl-aid wf_fastp.wdl -o wf_fastp.md
 
 run_fastp:
-	time miniwdl run --debug --dir test-fastp --cfg miniwdl_production.cfg --input wf_fastp.json wf_fastp.wdl
+	#time miniwdl run --debug --dir test-fastp --cfg miniwdl_production.cfg --input wf_fastp.json wf_fastp.wdl
 	time miniwdl run --debug --dir test-fastp_negative_control --cfg miniwdl_production.cfg --input wf_fastp_negative_control.json wf_fastp.wdl
 
 #
@@ -142,11 +142,12 @@ run_krakentools:
 # fastq_qc
 #
 fastq_qc:
-	java -jar ~/Software/womtool-86.jar validate --inputs wf_fastq_qc.json wf_fastq_qc.wdl
+	#java -jar ~/Software/womtool-86.jar validate --inputs wf_fastq_qc.json wf_fastq_qc.wdl
 	miniwdl check wf_fastq_qc.wdl
 
 run_fastq_qc:
-	time miniwdl run --debug --dir test-fastq_qc --cfg miniwdl_production.cfg --input wf_fastq_qc.json wf_fastq_qc.wdl 
+	#time miniwdl run --debug --dir test-fastq_qc --cfg miniwdl_production.cfg --input wf_fastq_qc.json wf_fastq_qc.wdl
+	time miniwdl run --debug --dir test-fastq_qc_negative_control --cfg miniwdl_production.cfg --input wf_fastq_qc_negative_control.json wf_fastq_qc.wdl 	
 
 run_fastq_qc_cromwell:
 	java -jar ~/Software/cromwell-86.jar run wf_fastq_qc.wdl -i wf_fastq_qc.json
