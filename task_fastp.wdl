@@ -23,6 +23,10 @@ task task_fastp {
     Boolean deduplication = false
     Boolean verbose = false
     Boolean overrepresentation_analysis = false
+    Boolean low_complexity_filter = true
+    Boolean disable_quality_filtering = false
+    Boolean disable_length_filtering = false
+    Boolean trim_poly_x = true
   }
 
   String unpaired1 = samplename + "_unpaired_1.fastq.gz"
@@ -53,20 +57,22 @@ task task_fastp {
     --detect_adapter_for_pe \
     --unpaired1 ~{unpaired1} \
     --unpaired2 ~{unpaired2} \
-    --trim_poly_x \
     --poly_x_min_len ~{poly_x_min_len} \
     --length_required ~{min_read_length} \
     --n_base_limit ~{n_base_limit} \
-    --low_complexity_filter \
     --complexity_threshold ~{low_complexity_threshold} \
     --average_qual ~{average_qual} \
     --cut_tail \
     --cut_window_size ~{cut_window_size} \
     --cut_mean_quality ~{cut_mean_quality} \
     ~{true="--adapter_fasta" false="" defined(adapter_fasta)} "${ADAPTERS}" \
-    ~{if verbose then '--verbose' else ''} \
-    ~{if deduplication then '--dedup' else ''} \
-    ~{if overrepresentation_analysis then '--overrepresentation_analysis' else ''} \
+    ~{if disable_quality_filtering then "--disable_quality_filtering" else ""} \
+    ~{if disable_length_filtering then "--disable_length_filtering" else ""} \
+    ~{if low_complexity_filter then "--low_complexity_filter" else ""} \
+    ~{if trim_poly_x then "--trim_poly_x" else ""} \
+    ~{if verbose then "--verbose" else ""} \
+    ~{if deduplication then "--dedup" else ""} \
+    ~{if overrepresentation_analysis then "--overrepresentation_analysis" else ""} \
     2> ~{log}
   >>>
   

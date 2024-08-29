@@ -12,8 +12,12 @@
     "wf_fastp.task_fastp.memory": "12GB",
     "wf_fastp.task_fastp.min_read_length": 50,
     "wf_fastp.task_fastp.n_base_limit": 5,
-    "wf_fastp.task_fastp.overrepresentation_analysis": false,
+    "wf_fastp.task_fastp.overrepresentation_analysis": true,
     "wf_fastp.task_fastp.poly_x_min_len": 10,
     "wf_fastp.task_fastp.threads": 32,
-    "wf_fastp.task_fastp.verbose": false
+    "wf_fastp.task_fastp.verbose": false,
+    "wf_fastp.task_fastp.low_complexity_filter": true,
+    "wf_fastp.task_fastp.disable_quality_filtering": true,
+    "wf_fastp.task_fastp.disable_length_filtering": false,
+    "wf_fastp.task_fastp.trim_poly_x": true
 }
