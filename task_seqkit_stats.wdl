@@ -3,13 +3,17 @@ version 1.0
 task task_seqkit_stats {
     input {
       Array[File]+ input_files
+      String samplename
       String seq_type = "auto"  # Default sequence type
+      String memory = "4GB"
+      String docker = "dbest/seqkit:v2.8.2"
       Int threads = 4  # Number of threads
-      String out_file = "seqkit_stats.txt"  # Output file
       Boolean tabular = true  # Output in machine-friendly tabular format
       Boolean basename = true
     }
 
+    String out_file = samplename + ".stats"
+    
     command {
       seqkit stats \
       --all \
@@ -26,8 +30,8 @@ task task_seqkit_stats {
     }
 
     runtime {
-        docker: "dbest/seqkit:v2.8.2"
-        memory: "2G"
+        docker: docker
+        memory: memory
         cpu: threads
     }
 }

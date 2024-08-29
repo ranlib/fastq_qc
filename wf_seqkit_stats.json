@@ -1,8 +1,10 @@
 {
-    "SeqKitWorkflow.input_files": [ "/home/dieterbest/Analysis/varpipe4/data/ERR552797_30percent_1.fq.gz","/home/dieterbest/Analysis/varpipe4/data/ERR552797_30percent_2.fq.gz"],
-    "SeqKitWorkflow.out_file": "seqkit_stats.txt",
-    "SeqKitWorkflow.seq_type": "auto",
-    "SeqKitWorkflow.tabular": true,
-    "SeqKitWorkflow.basename": true,
-    "SeqKitWorkflow.threads": 4
+    "wf_seqkit_stats.input_files": [ "/home/dbest/Software/varpipe4/data/ERR552797_30percent_1.fq.gz","/home/dbest/Software/varpipe4/data/ERR552797_30percent_2.fq.gz"],
+    "wf_seqkit_stats.samplename": "ERR552797",
+    "wf_seqkit_stats.task_seqkit_stats.basename": true,
+    "wf_seqkit_stats.task_seqkit_stats.docker": "dbest/seqkit:v2.8.2",
+    "wf_seqkit_stats.task_seqkit_stats.memory": "4GB",
+    "wf_seqkit_stats.task_seqkit_stats.seq_type": "auto",
+    "wf_seqkit_stats.task_seqkit_stats.tabular": true,
+    "wf_seqkit_stats.task_seqkit_stats.threads": 4
 }
