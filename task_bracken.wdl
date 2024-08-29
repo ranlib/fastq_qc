@@ -8,8 +8,8 @@ task task_bracken {
       String memory = "250GB"
       String samplename
       Int disk_size = 100
-      Int read_length = 150
-      Int threshold = 10
+      Int read_length = 250
+      Int threshold = 0
     }
 
     command <<<
