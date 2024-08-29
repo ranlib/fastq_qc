@@ -1,5 +1,5 @@
 {
-    "wf_kraken2.database": "/home/dbest/data/kraken2/k2_standard_20231009.tar.gz",
+    "wf_kraken2.database": "/home/dbest/data/kraken2/k2_standard_20240605.tar.gz",
     "wf_kraken2.disk_multiplier": 20,
     "wf_kraken2.disk_size": 100,
     "wf_kraken2.read1": "/home/dbest/Software/varpipe4/data/ERR552797_30percent_1.fq.gz",
@@ -7,8 +7,8 @@
     "wf_kraken2.samplename": "ERR552797",
     "wf_kraken2.task_bracken.docker": "staphb/bracken:2.9",
     "wf_kraken2.task_bracken.memory": "250GB",
-    "wf_kraken2.task_bracken.read_length": 150,
-    "wf_kraken2.task_bracken.threshold": 10,
+    "wf_kraken2.task_bracken.read_length": 250,
+    "wf_kraken2.task_bracken.threshold": 0,
     "wf_kraken2.task_kraken2.docker": "staphb/kraken2:2.1.3",
     "wf_kraken2.task_kraken2.memory": "250GB",
     "wf_kraken2.task_kraken2.minimum_base_quality": 20,
