@@ -52,7 +52,7 @@ workflow wf_fastq_qc {
     samplename = samplename
   }
 
-  Boolean filter = task_fastqc.numberForwardReads > minNumberReads
+  Boolean filter = task_fastqc.numberForwardReads >= minNumberReads
   if ( filter ) {
     
     if ( run_fastp ) {
