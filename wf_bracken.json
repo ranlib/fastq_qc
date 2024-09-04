@@ -1,0 +1,10 @@
+{
+  "wf_bracken.database": "/home/dbest/data/kraken2/k2_standard_20240605.tar.gz",
+  "wf_bracken.kraken_report": "/home/dbest/Software/wdl/NC-070824.kraken.output",
+  "wf_bracken.samplename": "NC-070824",
+  "wf_bracken.task_bracken.disk_size": 100,
+  "wf_bracken.task_bracken.docker": "staphb/bracken:2.9",
+  "wf_bracken.task_bracken.memory": "250GB",
+  "wf_bracken.task_bracken.read_length": 250,
+  "wf_bracken.task_bracken.threshold": 0
+}
