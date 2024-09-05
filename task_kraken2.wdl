@@ -30,6 +30,8 @@ task task_kraken2 {
     --minimum-hit-groups 3 \
     --report-minimizer-data \
     --gzip-compressed \
+    ~{if memory_mapping then "--memory_mapping" else ""} \
+    ~{if quick then "--quick" else ""} \
     --paired \
     ~{read1} ~{read2}
 
