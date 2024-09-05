@@ -11,6 +11,8 @@ task task_recentrifuge {
       String output_type = "TSV"
       String memory = "16GB"
       String input_type = "centrifuge"
+      String scoring = "KRAKEN"
+      Int minscore = 0
       Int controls_number = 0
       Int? taxid_excluded
     }
@@ -19,16 +21,23 @@ task task_recentrifuge {
 
     command <<<
       set -x
+      N=$(cat ~{input_file} | wc -l)
+      echo "Number of lines in input_file = $N" > ~{outprefix}.err
+      if [ $N -gt 1 ]
+      then
       cp ~{nodes_dump} .
       cp ~{names_dump} . 
       rcf \
       ~{option} ~{input_file} \
       --nodespath . \
       --format ~{format} \
+      --scoring ~{scoring} \
+      --minscore ~{minscore} \
       --extra ~{output_type} \
       --outprefix ~{outprefix} \
       --controls ~{controls_number} \
-      ~{if defined(taxid_excluded) then "--exclude" else ""}  ~{taxid_excluded}
+      ~{if defined(taxid_excluded) then "--exclude" else ""} ~{taxid_excluded}
+      fi
     >>>
 
     output {
