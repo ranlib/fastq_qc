@@ -5,7 +5,7 @@ task task_extract_kraken_reads {
     File kraken_file
     File read1
     File read2
-    Array[Int]+ taxid = [] # list of taxids to include or exclude
+    Array[Int]+ taxid = [ 9606 ] # list of taxids to include or exclude
     String samplename
     String docker = "dbest/krakentools:v1.2"
     String memory = "10GB"
