@@ -1,6 +1,6 @@
 {
-    "wf_krakentools.bracken_file": "/home/dbest/Software/wdl/test-kraken2_Vaccinia/_LAST/out/brackenReport/5/1M1000643.S.bracken.report",
-    "wf_krakentools.kraken_file": "/home/dbest/Software/wdl/test-kraken2_Vaccinia/_LAST/out/krakenOutput/1M1000643.kraken.output",
+    "wf_krakentools.bracken_file": "/home/dbest/Software/wdl/test-kraken2_Vaccinia/20240823_150332_wf_kraken2/out/brackenReport/5/1M1000643.S.bracken.report",
+    "wf_krakentools.kraken_file": "/home/dbest/Software/wdl/test-kraken2_Vaccinia/20240823_150332_wf_kraken2/out/krakenOutput/1M1000643.kraken.output",
     "wf_krakentools.read1": "/home/dbest/Analysis/Alex/Vaccinia/data/1M1000643_S14_L001_R1_001.fastq.gz",
     "wf_krakentools.read2": "/home/dbest/Analysis/Alex/Vaccinia/data/1M1000643_S14_L001_R2_001.fastq.gz",
     "wf_krakentools.samplename": "1M1000643",
@@ -12,6 +12,6 @@
     "wf_krakentools.task_filter_bracken_output.disk_size": 100,
     "wf_krakentools.task_filter_bracken_output.docker": "dbest/krakentools:v1.2",
     "wf_krakentools.task_filter_bracken_output.memory": "10GB",
-    "wf_krakentools.task_filter_bracken_output.taxid_exclude": [ 9606 ],
+    "wf_krakentools.task_filter_bracken_output.taxid_exclude": [9606],
     "wf_krakentools.task_filter_bracken_output.taxid_include": []
 }
