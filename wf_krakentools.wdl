@@ -9,9 +9,8 @@ workflow wf_krakentools {
     File kraken_file
     File read1
     File read2
-
     String samplename
-    
+
     # bracken
     File bracken_file
   }
