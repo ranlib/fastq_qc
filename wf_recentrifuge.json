@@ -1,13 +1,12 @@
 {
-    "wf_recentrifuge.input_file": "/home/dbest/Software/wdl/test-centrifuge/_LAST/out/classificationTSV/1M1000643.centrifuge.classification.tsv",
+    "wf_recentrifuge.input_file": "/home/dbest/Software/wdl/test-centrifuge/_LAST/out/classificationTSV/ERR552797.centrifuge.classification.tsv",
     "wf_recentrifuge.input_type": "centrifuge",
     "wf_recentrifuge.names_dump": "/home/dbest/Software/wdl/taxdump/names.dmp",
     "wf_recentrifuge.nodes_dump": "/home/dbest/Software/wdl/taxdump/nodes.dmp",
-    "wf_recentrifuge.outprefix": "1M1000643",
+    "wf_recentrifuge.outprefix": "ERR552797",
     "wf_recentrifuge.task_recentrifuge.controls_number": 0,
     "wf_recentrifuge.task_recentrifuge.docker": "dbest/recentrifuge:v1.14.1",
     "wf_recentrifuge.task_recentrifuge.format": "GENERIC_FORMAT",
     "wf_recentrifuge.task_recentrifuge.memory": "16GB",
-    "wf_recentrifuge.task_recentrifuge.output_type": "TSV",
-    "wf_recentrifuge.task_recentrifuge.taxid_excluded": 9606
+    "wf_recentrifuge.task_recentrifuge.output_type": "TSV"
 }
