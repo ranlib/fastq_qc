@@ -86,9 +86,25 @@ kraken2_docu:
 	wdl-aid wf_kraken2.wdl -o wf_kraken2.md
 
 run_kraken2:
-	#time miniwdl run --dir test-kraken2_Vaccinia --debug --cfg miniwdl_production.cfg -i wf_kraken2_Vaccinia.json wf_kraken2.wdl
+	time miniwdl run --dir test-kraken2_Vaccinia --debug --cfg miniwdl_production.cfg -i wf_kraken2_Vaccinia.json wf_kraken2.wdl
 	#time miniwdl run --dir test-kraken2_TB --debug --cfg miniwdl_production.cfg -i wf_kraken2.json wf_kraken2.wdl		
-	time miniwdl run --dir test-kraken2_negative_control --debug --cfg miniwdl_production.cfg -i wf_kraken2_negative_control.json wf_kraken2.wdl
+	#time miniwdl run --dir test-kraken2_negative_control --debug --cfg miniwdl_production.cfg -i wf_kraken2_negative_control.json wf_kraken2.wdl
+
+#
+# bracken
+#
+bracken:
+	#java -jar ~/Software/womtool-86.jar validate --inputs wf_bracken_large.json wf_bracken.wdl
+	java -jar ~/Software/womtool-86.jar validate --inputs wf_bracken.json wf_bracken.wdl	
+	time miniwdl check wf_bracken.wdl
+
+bracken_docu:
+	wdl-aid wf_bracken.wdl -o wf_bracken.md
+
+run_bracken:
+	#time miniwdl run --dir test-bracken_Vaccinia --debug --cfg miniwdl_production.cfg -i wf_bracken_Vaccinia.json wf_bracken.wdl
+	#time miniwdl run --dir test-bracken_TB --debug --cfg miniwdl_production.cfg -i wf_bracken.json wf_bracken.wdl		
+	time miniwdl run --dir test-bracken_negative_control --debug --cfg miniwdl_production.cfg -i wf_bracken_negative_control.json wf_bracken.wdl
 
 #
 # recentrifuge
@@ -101,7 +117,8 @@ recentrifuge_docu:
 	wdl-aid wf_recentrifuge.wdl -o wf_recentrifuge.md
 
 run_recentrifuge:
-	miniwdl run --dir test-recentrifuge --debug --cfg miniwdl_production.cfg -i wf_recentrifuge.json wf_recentrifuge.wdl
+	#miniwdl run --dir test-recentrifuge --debug --cfg miniwdl_production.cfg -i wf_recentrifuge.json wf_recentrifuge.wdl
+	miniwdl run --dir test-recentrifuge_kraken --debug --cfg miniwdl_production.cfg -i wf_recentrifuge_kraken.json wf_recentrifuge.wdl
 
 #
 # multiqc
