@@ -11,6 +11,8 @@ task task_kraken2 {
     Int disk_size = 100
     Int threads = 32
     Int minimum_base_quality = 20
+    Boolean memory_mapping = false
+    Boolean quick = false
   }
 
   command <<<
