@@ -25,14 +25,19 @@ workflow wf_kraken2 {
     disk_size = disk_size_gb
   }
 
-  call bracken.task_bracken {
-    input:
-    kraken_report = task_kraken2.krakenReport,
-    samplename = samplename,
-    database = database,
-    disk_size = disk_size_gb
+  Array[String] levels = ["P", "C", "O", "F", "G", "S", "S1"]
+  
+  scatter ( level in levels ) {
+    call bracken.task_bracken {
+      input:
+      kraken_report = task_kraken2.krakenReport,
+      samplename = samplename,
+      database = database,
+      disk_size = disk_size_gb,
+      level = level
+    }
   }
-
+  
   output {
     File krakenReport = task_kraken2.krakenReport
     File krakenOutput = task_kraken2.krakenOutput
