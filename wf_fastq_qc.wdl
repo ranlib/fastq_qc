@@ -30,7 +30,11 @@ workflow wf_fastq_qc {
     # centrifuge
     Array[File]+ indexFiles
 
+    # filter bracken output
+    Boolean filter_bracken_output = false
+    
     # recentrifuge
+    Boolean recentrifuge = false
     File nodes_dump
     File names_dump
 
@@ -80,13 +84,15 @@ workflow wf_fastq_qc {
       read2 = select_first([task_fastp.read2_trimmed, read2]),
       samplename = samplename
     }
-    
-    call filter_bracken.task_filter_bracken_output {
-      input:
-      bracken_file = wf_kraken2.brackenReport[5],
-      samplename = samplename
+
+    if ( filter_bracken_output ) {
+      call filter_bracken.task_filter_bracken_output {
+	input:
+	bracken_file = wf_kraken2.brackenReport[5],
+	samplename = samplename
+      }
     }
-    
+  
     call centrifuge.wf_centrifuge {
       input:
       read1 = select_first([task_fastp.read1_trimmed, read1]),
@@ -94,23 +100,25 @@ workflow wf_fastq_qc {
       samplename = samplename,
       indexFiles = indexFiles
     }
-    
-    call recentrifuge.task_recentrifuge {
-      input:
-      input_file = wf_centrifuge.classificationTSV,
-      nodes_dump = nodes_dump,
-      names_dump = names_dump,
-      input_type = "centrifuge",
-      outprefix = samplename
-    }
-    
-    call recentrifuge.task_recentrifuge as kraken_recentrifuge {
-      input:
-      input_file = wf_kraken2.krakenOutput,
-      nodes_dump = nodes_dump,
-      names_dump = names_dump,
-      input_type = "kraken2",
-      outprefix = samplename
+
+    if ( recentrifuge ) {
+      call recentrifuge.task_recentrifuge {
+	input:
+	input_file = wf_centrifuge.classificationTSV,
+	nodes_dump = nodes_dump,
+	names_dump = names_dump,
+	input_type = "centrifuge",
+	outprefix = samplename
+      }
+      
+      call recentrifuge.task_recentrifuge as kraken_recentrifuge {
+	input:
+	input_file = wf_kraken2.krakenOutput,
+	nodes_dump = nodes_dump,
+	names_dump = names_dump,
+	input_type = "kraken2",
+	outprefix = samplename
+      }
     }
     
     if ( run_metaphlan ) {
