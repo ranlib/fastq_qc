@@ -29,6 +29,7 @@ workflow wf_kraken2 {
     input:
     kraken_report = task_kraken2.krakenReport,
     samplename = samplename,
+    database = database,
     disk_size = disk_size_gb
   }
 
@@ -36,6 +37,7 @@ workflow wf_kraken2 {
     File krakenReport = task_kraken2.krakenReport
     File krakenOutput = task_kraken2.krakenOutput
     Array[File] brackenReport = task_bracken.bracken_report
+    Array[File] brackenError = task_bracken.bracken_error
     Array[File] unclassified = task_kraken2.unclassified
     Array[File] classified = task_kraken2.classified
   }

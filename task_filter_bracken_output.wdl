@@ -18,8 +18,8 @@ task task_filter_bracken_output {
     filter_bracken.out.py \
     --input-file ~{bracken_file} \
     --output ~{bracken_file_filtered} \
-    --exclude ~{sep="" taxid_exclude} \
-    --include ~{sep="" taxid_include}
+    ~{if length(taxid_exclude) > 0 then "--exclude" else ""} ~{sep="" taxid_exclude} \
+    ~{if length(taxid_include) > 0 then "--include" else ""} ~{sep="" taxid_include}
   >>>
 
   output {
