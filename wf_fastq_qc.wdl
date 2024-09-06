@@ -16,7 +16,6 @@ workflow wf_fastq_qc {
     # fastqc
     File read1
     File read2
-    Boolean run_fastqc_after_cleanup = true
     Int minNumberReads = 1
 
     # fastp
@@ -31,10 +30,10 @@ workflow wf_fastq_qc {
     Array[File]+ indexFiles
 
     # filter bracken output
-    Boolean filter_bracken_output = false
+    Boolean run_filter_bracken_output = false
     
     # recentrifuge
-    Boolean recentrifuge = false
+    Boolean run_recentrifuge = false
     File nodes_dump
     File names_dump
 
@@ -85,7 +84,7 @@ workflow wf_fastq_qc {
       samplename = samplename
     }
 
-    if ( filter_bracken_output ) {
+    if ( run_filter_bracken_output ) {
       call filter_bracken.task_filter_bracken_output {
 	input:
 	bracken_file = wf_kraken2.brackenReport[5],
@@ -101,7 +100,7 @@ workflow wf_fastq_qc {
       indexFiles = indexFiles
     }
 
-    if ( recentrifuge ) {
+    if ( run_recentrifuge ) {
       call recentrifuge.task_recentrifuge {
 	input:
 	input_file = wf_centrifuge.classificationTSV,
