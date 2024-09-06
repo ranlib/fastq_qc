@@ -3,7 +3,8 @@ version 1.0
 import "./task_fastqc.wdl" as fastqc
 import "./task_seqkit_stats.wdl" as stats
 import "./task_fastp.wdl" as fastp
-import "./wf_kraken2.wdl" as kraken
+import "./task_kraken2.wdl" as kraken
+import "./task_bracken.wdl" as bracken
 import "./task_extract_kraken_reads.wdl" as extract_reads
 import "./task_filter_bracken_output.wdl" as filter_bracken
 import "./wf_centrifuge.wdl" as centrifuge
@@ -25,6 +26,8 @@ workflow wf_fastq_qc {
     
     # kraken2
     File database
+    Int disk_size = 100
+    Int disk_multiplier = 20
 
     # centrifuge
     Array[File]+ indexFiles
@@ -42,6 +45,9 @@ workflow wf_fastq_qc {
     String bowtie2db
     String bowtie2index
   }
+
+  Int dynamic_disk_size = disk_multiplier*ceil(size(read1, "GiB"))
+  Int disk_size_gb = select_first([disk_size, dynamic_disk_size])
 
   call fastqc.task_fastqc {
     input:
@@ -68,17 +74,31 @@ workflow wf_fastq_qc {
       }
     }
     
-    call kraken.wf_kraken2 {
+
+    call kraken.task_kraken2 {
       input:
       read1 = select_first([task_fastp.read1_trimmed, read1]),
       read2 = select_first([task_fastp.read2_trimmed, read2]),
+      samplename = samplename,
       database = database,
-      samplename = samplename
+      disk_size = disk_size_gb
+    }
+    
+    Array[String] levels = ["P", "C", "O", "F", "G", "S", "S1"]
+    scatter ( level in levels ) {
+      call bracken.task_bracken {
+	input:
+	kraken_report = task_kraken2.krakenReport,
+	samplename = samplename,
+	database = database,
+	disk_size = disk_size_gb,
+	level = level
+      }
     }
     
     call extract_reads.task_extract_kraken_reads {
       input:
-      kraken_file = wf_kraken2.krakenReport,
+      kraken_file = task_kraken2.krakenReport,
       read1 = select_first([task_fastp.read1_trimmed, read1]),
       read2 = select_first([task_fastp.read2_trimmed, read2]),
       samplename = samplename
@@ -87,7 +107,7 @@ workflow wf_fastq_qc {
     if ( run_filter_bracken_output ) {
       call filter_bracken.task_filter_bracken_output {
 	input:
-	bracken_file = wf_kraken2.brackenReport[5],
+	bracken_file = task_bracken.bracken_report[5],
 	samplename = samplename
       }
     }
@@ -112,7 +132,7 @@ workflow wf_fastq_qc {
       
       call recentrifuge.task_recentrifuge as kraken_recentrifuge {
 	input:
-	input_file = wf_kraken2.krakenOutput,
+	input_file = task_kraken2.krakenOutput,
 	nodes_dump = nodes_dump,
 	names_dump = names_dump,
 	input_type = "kraken2",
@@ -136,7 +156,7 @@ workflow wf_fastq_qc {
   task_fastqc.forwardData,
   task_fastqc.reverseData,
   task_fastp.json_file,
-  wf_kraken2.krakenReport,
+  task_kraken2.krakenReport,
   wf_centrifuge.krakenStyleTSV
   ])
   if ( length(allReports) > 0 ) {
@@ -171,11 +191,12 @@ workflow wf_fastq_qc {
     File? json_file = task_fastp.json_file
     
     # kraken2
-    File? krakenReport = wf_kraken2.krakenReport
-    File? krakenOutput = wf_kraken2.krakenOutput
-    Array[File]? brackenReport = wf_kraken2.brackenReport
-    Array[File]? unclassified = wf_kraken2.unclassified
-    Array[File]? classified = wf_kraken2.classified
+    File? krakenReport = task_kraken2.krakenReport
+    File? krakenOutput = task_kraken2.krakenOutput
+    Array[File]? brackenReport = task_bracken.bracken_report
+    Array[File]? brackenError = task_bracken.bracken_error
+    Array[File]? unclassified = task_kraken2.unclassified
+    Array[File]? classified = task_kraken2.classified
 
     # kraken filter
     File? read1_output = task_extract_kraken_reads.read1_output
