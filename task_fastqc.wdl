@@ -7,7 +7,7 @@ task task_fastqc {
     File? adapters
     File? contaminants
     File? limits
-    Int threads = 1
+    Int threads = 12
     String docker = "staphb/fastqc:0.12.1"
     String memory = "8GB"
   }
