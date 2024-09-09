@@ -7,7 +7,8 @@ import "./task_kraken2.wdl" as kraken
 import "./task_bracken.wdl" as bracken
 import "./task_extract_kraken_reads.wdl" as extract_reads
 import "./task_filter_bracken_output.wdl" as filter_bracken
-import "./wf_centrifuge.wdl" as centrifuge
+import "./task_centrifuge.wdl" as centrifuge
+import "./task_kreport.wdl" as kreport
 import "./task_recentrifuge.wdl" as recentrifuge
 import "./task_metaphlan.wdl" as metaphlan
 import "./task_multiqc.wdl" as multiqc
@@ -74,7 +75,7 @@ workflow wf_fastq_qc {
       }
     }
     
-
+    # Kraken
     call kraken.task_kraken2 {
       input:
       read1 = select_first([task_fastp.read1_trimmed, read1]),
@@ -111,26 +112,37 @@ workflow wf_fastq_qc {
 	samplename = samplename
       }
     }
-  
-    call centrifuge.wf_centrifuge {
+
+    # centrifuge
+    call centrifuge.task_centrifuge {
       input:
       read1 = select_first([task_fastp.read1_trimmed, read1]),
       read2 = select_first([task_fastp.read2_trimmed, read2]),
       samplename = samplename,
+      disk_size = disk_size_gb,
       indexFiles = indexFiles
     }
 
+    call kreport.task_kreport {
+      input:
+      classificationTSV = task_centrifuge.classificationTSV,
+      samplename = samplename,
+      disk_size = disk_size_gb,
+      indexFiles = indexFiles
+    }
+  
+    # recentrifuge
     if ( run_recentrifuge ) {
       call recentrifuge.task_recentrifuge {
 	input:
-	input_file = wf_centrifuge.classificationTSV,
+	input_file = task_centrifuge.classificationTSV,
 	nodes_dump = nodes_dump,
 	names_dump = names_dump,
 	input_type = "centrifuge",
 	outprefix = samplename
       }
       
-      call recentrifuge.task_recentrifuge as kraken_recentrifuge {
+      call recentrifuge.task_recentrifuge as task_recentrifuge_kraken {
 	input:
 	input_file = task_kraken2.krakenOutput,
 	nodes_dump = nodes_dump,
@@ -157,7 +169,7 @@ workflow wf_fastq_qc {
   task_fastqc.reverseData,
   task_fastp.json_file,
   task_kraken2.krakenReport,
-  wf_centrifuge.krakenStyleTSV
+  task_kreport.krakenStyleTSV
   ])
   if ( length(allReports) > 0 ) {
     call multiqc.task_multiqc {
@@ -205,13 +217,14 @@ workflow wf_fastq_qc {
     File? bracken_filtered = task_filter_bracken_output.output_file
     
     # centrifuge
-    File? classificationTSV = wf_centrifuge.classificationTSV
-    File? summaryReportTSV = wf_centrifuge.summaryReportTSV
-    File? krakenStyleTSV = wf_centrifuge.krakenStyleTSV
+    File? classificationTSV = task_centrifuge.classificationTSV
+    File? summaryReportTSV = task_centrifuge.summaryReportTSV
+    File? krakenStyleTSV = task_kreport.krakenStyleTSV
+    File? krakenStyleErr = task_kreport.krakenStyleErr
 
     # recentrifuge
     Array[File]? rcf_output = task_recentrifuge.outputs
-    Array[File]? rcf_output_kraken = kraken_recentrifuge.outputs
+    Array[File]? rcf_output_kraken = task_recentrifuge_kraken.outputs
 
     # metaphlan
     File? metaphlan_report = task_metaphlan.output_file
