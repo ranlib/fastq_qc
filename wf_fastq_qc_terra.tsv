@@ -1,0 +1,2 @@
+entity:test_id	samplename	read1	read2
+0	NC-010524		gs://fc-531ef259-f33c-4540-8f83-7d502ed7d975/negative_controls/NC-010524_S1_L001_R1_001.fastq.gz	gs://fc-531ef259-f33c-4540-8f83-7d502ed7d975/negative_controls/NC-010524_S1_L001_R2_001.fastq.gz
