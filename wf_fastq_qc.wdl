@@ -32,7 +32,8 @@ workflow wf_fastq_qc {
 
     # centrifuge
     Array[File]+ indexFiles
-
+    Boolean run_kreport = false
+    
     # filter bracken output
     Boolean run_filter_bracken_output = false
     
@@ -123,12 +124,14 @@ workflow wf_fastq_qc {
       indexFiles = indexFiles
     }
 
-    call kreport.task_kreport {
-      input:
-      classificationTSV = task_centrifuge.classificationTSV,
-      samplename = samplename,
-      disk_size = disk_size_gb,
-      indexFiles = indexFiles
+    if ( run_kreport ) {
+      call kreport.task_kreport {
+	input:
+	classificationTSV = task_centrifuge.classificationTSV,
+	samplename = samplename,
+	disk_size = disk_size_gb,
+	indexFiles = indexFiles
+      }
     }
   
     # recentrifuge
