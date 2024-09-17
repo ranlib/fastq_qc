@@ -75,7 +75,7 @@
   "wf_fastq_qc.task_metaphlan.stat": "tavg_g",
   "wf_fastq_qc.task_metaphlan.taxonomic_level": "a",
   "wf_fastq_qc.task_metaphlan.threads": 12,
-  "wf_fastq_qc.task_multiqc.docker": "multiqc/multiqc:v1.24",
+  "wf_fastq_qc.task_multiqc.docker": "multiqc/multiqc:v1.25",
   "wf_fastq_qc.task_multiqc.memory": "8GB",
   "wf_fastq_qc.task_recentrifuge.controls_number": 0,
   "wf_fastq_qc.task_recentrifuge.docker": "dbest/recentrifuge:v1.14.1",
