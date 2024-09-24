@@ -14,6 +14,19 @@ run_fastqc:
 	miniwdl run --debug --dir test-fastqc_negative_control --cfg miniwdl_production.cfg  --input wf_fastqc_negative_control.json wf_fastqc.wdl	
 
 #
+# cutadapt
+#
+cutadapt:
+	java -jar ~/Software/womtool-86.jar validate --inputs wf_cutadapt.json wf_cutadapt.wdl
+	miniwdl check wf_cutadapt.wdl
+
+cutadapt_docu:
+	wdl-aid wf_cutadapt.wdl -o wf_cutadapt.md
+
+run_cutadapt:
+	miniwdl run --debug --dir test-cutadapt --cfg miniwdl_production.cfg  --input wf_cutadapt.json wf_cutadapt.wdl
+
+#
 # seqkit
 #
 seqkit:
