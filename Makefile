@@ -166,10 +166,13 @@ fastq_qc:
 
 run_fastq_qc:
 	#time miniwdl run --debug --dir test-fastq_qc --cfg miniwdl_production.cfg --input wf_fastq_qc.json wf_fastq_qc.wdl
-	time miniwdl run --debug --dir test-fastq_qc_negative_control --cfg miniwdl_production.cfg --input wf_fastq_qc_negative_control.json wf_fastq_qc.wdl 	
+	#time miniwdl run --debug --dir test-fastq_qc_negative_control --cfg miniwdl_production.cfg --input wf_fastq_qc_negative_control.json wf_fastq_qc.wdl
+	time miniwdl run --debug --dir test-fastq_qc_negative_control_NC-031924 --cfg miniwdl_production.cfg --input wf_fastq_qc_negative_control_NC-031924.json wf_fastq_qc.wdl 	
 
 run_fastq_qc_cromwell:
-	java -jar ~/Software/cromwell-86.jar run wf_fastq_qc.wdl -i wf_fastq_qc.json
+	#time java -jar ~/Software/cromwell-86.jar run wf_fastq_qc.wdl -i wf_fastq_qc.json
+	#time java -jar ~/Software/cromwell-86.jar run wf_fastq_qc.wdl -i wf_fastq_qc_negative_control.json
+	time java -jar ~/Software/cromwell-86.jar run wf_fastq_qc.wdl -i wf_fastq_qc_negative_control_NC-031924.json
 
 fastq_qc_docu:
 	wdl-aid wf_fastq_qc.wdl -o wf_fastq_qc.md
