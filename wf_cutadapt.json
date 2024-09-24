@@ -1,0 +1,9 @@
+{
+  "wf_cutadapt.adapt1": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC",
+  "wf_cutadapt.adapt2": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA",
+  "wf_cutadapt.in1_fastq": "input_R1.fastq",
+  "wf_cutadapt.in2_fastq": "input_R2.fastq",
+  "wf_cutadapt.output_prefix": "trimmed_output",
+  "wf_cutadapt.docker_image": "dbest/cutadapt:v4.4",
+  "wf_cutadapt.options": "--quality-cutoff=20"
+}
