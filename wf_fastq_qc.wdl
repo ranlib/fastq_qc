@@ -95,8 +95,8 @@ workflow wf_fastq_qc {
     # Kraken
     call kraken.task_kraken2 {
       input:
-      read1 = select_first([task_fastp.read1_trimmed, read1]),
-      read2 = select_first([task_fastp.read2_trimmed, read2]),
+      read1 = select_first([task_fastp.read1_trimmed, task_cutadapt.output_read1, read1]),
+      read2 = select_first([task_fastp.read2_trimmed, task_cutadapt.output_read2, read2]),
       samplename = samplename,
       database = database,
       disk_size = disk_size_gb
@@ -117,8 +117,8 @@ workflow wf_fastq_qc {
     call extract_reads.task_extract_kraken_reads {
       input:
       kraken_file = task_kraken2.krakenReport,
-      read1 = select_first([task_fastp.read1_trimmed, read1]),
-      read2 = select_first([task_fastp.read2_trimmed, read2]),
+      read1 = select_first([task_fastp.read1_trimmed, task_cutadapt.output_read1, read1]),
+      read2 = select_first([task_fastp.read2_trimmed, task_cutadapt.output_read2, read2]),
       samplename = samplename
     }
 
@@ -174,8 +174,8 @@ workflow wf_fastq_qc {
     if ( run_metaphlan ) {
       call metaphlan.task_metaphlan {
 	input:
-	read1 = select_first([task_fastp.read1_trimmed, read1]),
-	read2 = select_first([task_fastp.read2_trimmed, read2]),
+	read1 = select_first([task_fastp.read1_trimmed, task_cutadapt.output_read1, read1]),
+	read2 = select_first([task_fastp.read2_trimmed, task_cutadapt.output_read2, read2]),
 	samplename = samplename,
 	bowtie2db = bowtie2db,
 	bowtie2index = bowtie2index
