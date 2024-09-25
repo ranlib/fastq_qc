@@ -1,7 +1,10 @@
 {
+  "wf_fastq_qc.adapt1": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC",
+  "wf_fastq_qc.adapt2": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA",
   "wf_fastq_qc.adapter_fasta": "/home/dbest/Software/varpipe4/contamination/adapters.fa.gz",
   "wf_fastq_qc.bowtie2db": "/home/dbest/mambaforge/envs/analysis/lib/python3.12/site-packages/metaphlan/metaphlan_databases",
   "wf_fastq_qc.bowtie2index": "mpa_vJun23_CHOCOPhlAnSGB_202403",
+  "wf_fastq_qc.cutadapt_options": "--max-n 5 --poly-a",
   "wf_fastq_qc.database": "/home/dbest/data/kraken2/k2_standard_08gb_20240112.tar.gz",
   "wf_fastq_qc.disk_multiplier": 20,
   "wf_fastq_qc.disk_size": 100,

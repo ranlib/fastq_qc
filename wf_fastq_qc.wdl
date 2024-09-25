@@ -3,6 +3,7 @@ version 1.0
 import "./task_fastqc.wdl" as fastqc
 import "./task_seqkit_stats.wdl" as stats
 import "./task_fastp.wdl" as fastp
+import "./task_cutadapt.wdl" as cutadapt
 import "./task_kraken2.wdl" as kraken
 import "./task_bracken.wdl" as bracken
 import "./task_extract_kraken_reads.wdl" as extract_reads
@@ -24,7 +25,12 @@ workflow wf_fastq_qc {
     File? adapter_fasta
     String samplename
     Boolean run_fastp = false
-    
+
+    # cutadapt
+    String adapt1         # Adapter for read 1
+    String adapt2         # Adapter for read 2
+    String? cutadapt_options       # Optional cutadapt parameters
+
     # kraken2
     File database
     Int disk_size = 100
@@ -74,6 +80,16 @@ workflow wf_fastq_qc {
 	read2 = read2,
 	adapter_fasta = adapter_fasta
       }
+    }
+
+    call cutadapt.task_cutadapt {
+      input:
+      adapt1 = adapt1,
+      adapt2 = adapt2,
+      read1 = read1,
+      read2 = read2,
+      samplename = samplename,
+      cutadapt_options = cutadapt_options
     }
     
     # Kraken
@@ -172,7 +188,8 @@ workflow wf_fastq_qc {
   task_fastqc.reverseData,
   task_fastp.json_file,
   task_kraken2.krakenReport,
-  task_kreport.krakenStyleTSV
+  task_kreport.krakenStyleTSV,
+  task_cutadapt.output_log
   ])
   if ( length(allReports) > 0 ) {
     call multiqc.task_multiqc {
@@ -193,7 +210,7 @@ workflow wf_fastq_qc {
     File forwardData = task_fastqc.forwardData
     File reverseData = task_fastqc.reverseData
 
-    # seqkit
+    # seqkit stats
     File stats_output = task_seqkit_stats.stats_output
 
     # fastp
@@ -201,17 +218,22 @@ workflow wf_fastq_qc {
     File? read2_clean = task_fastp.read2_trimmed
     File? read1_unpaired = task_fastp.unpaired1_file
     File? read2_unpaired = task_fastp.unpaired2_file
-    File? log_file = task_fastp.log_file
-    File? html_file = task_fastp.html_file
-    File? json_file = task_fastp.json_file
-    
+    File? fastp_log = task_fastp.log_file
+    File? fastp_html = task_fastp.html_file
+    File? fastp_json = task_fastp.json_file
+
+    # cutadapt
+    File? cutadapt_trimmed_1 = task_cutadapt.output_read1
+    File? cutadapt_trimmed_2 = task_cutadapt.output_read2
+    File? cutadapt_log = task_cutadapt.output_log
+
     # kraken2
-    File? krakenReport = task_kraken2.krakenReport
-    File? krakenOutput = task_kraken2.krakenOutput
-    Array[File]? brackenReport = task_bracken.bracken_report
-    Array[File]? brackenError = task_bracken.bracken_error
-    Array[File]? unclassified = task_kraken2.unclassified
-    Array[File]? classified = task_kraken2.classified
+    File? kraken_report = task_kraken2.krakenReport
+    File? kraken_output = task_kraken2.krakenOutput
+    Array[File]? bracken_report = task_bracken.bracken_report
+    Array[File]? bracken_error = task_bracken.bracken_error
+    Array[File]? kraken_unclassified = task_kraken2.unclassified
+    Array[File]? kraken_classified = task_kraken2.classified
 
     # kraken filter
     File? read1_output = task_extract_kraken_reads.read1_output
@@ -220,10 +242,10 @@ workflow wf_fastq_qc {
     File? bracken_filtered = task_filter_bracken_output.output_file
     
     # centrifuge
-    File? classificationTSV = task_centrifuge.classificationTSV
-    File? summaryReportTSV = task_centrifuge.summaryReportTSV
-    File? krakenStyleTSV = task_kreport.krakenStyleTSV
-    File? krakenStyleErr = task_kreport.krakenStyleErr
+    File? centrifuge_classification = task_centrifuge.classificationTSV
+    File? centrifuge_summary = task_centrifuge.summaryReportTSV
+    File? centrifuge_kraken_style = task_kreport.krakenStyleTSV
+    File? centrifuge_kraken_style_err = task_kreport.krakenStyleErr
 
     # recentrifuge
     Array[File]? rcf_output = task_recentrifuge.outputs
