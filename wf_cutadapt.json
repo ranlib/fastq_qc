@@ -1,9 +1,8 @@
 {
-  "wf_cutadapt.adapt1": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC",
-  "wf_cutadapt.adapt2": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA",
-  "wf_cutadapt.in1_fastq": "input_R1.fastq",
-  "wf_cutadapt.in2_fastq": "input_R2.fastq",
-  "wf_cutadapt.output_prefix": "trimmed_output",
-  "wf_cutadapt.docker_image": "dbest/cutadapt:v4.4",
-  "wf_cutadapt.options": "--quality-cutoff=20"
+    "wf_cutadapt.adapt1": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC",
+    "wf_cutadapt.adapt2": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA",
+    "wf_cutadapt.cutadapt_options": "--max-n 5 --poly-a",
+    "wf_cutadapt.read1": "/home/dbest/Software/varpipe4/data/ERR552797_30percent_1.fq.gz",
+    "wf_cutadapt.read2": "/home/dbest/Software/varpipe4/data/ERR552797_30percent_2.fq.gz",
+    "wf_cutadapt.samplename": "ERR552797"
 }

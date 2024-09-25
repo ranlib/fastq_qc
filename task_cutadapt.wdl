@@ -2,32 +2,37 @@ version 1.0
 
 task task_cutadapt {
     input {
-        String adapt1         # Adapter sequence for read 1
-        String adapt2         # Adapter sequence for read 2
-        File in1_fastq        # Input FASTQ file 1
-        File in2_fastq        # Input FASTQ file 2
-        String output_prefix  # Prefix for output file names
-        String? options       # Optional cutadapt parameters (e.g., quality thresholds)
-        String docker_image   # Docker image with cutadapt installed
+      String adapt1         # Adapter sequence for read 1
+      String adapt2         # Adapter sequence for read 2
+      File read1            # Input FASTQ file 1
+      File read2            # Input FASTQ file 2
+      String samplename     # Prefix for output file names
+      String? cutadapt_options       # Optional cutadapt parameters (e.g., quality thresholds)
+      String docker = "dbest/cutadapt:v4.4"        # Docker image with cutadapt installed
     }
 
+    String trimmed_1 = "${samplename}_trimmed_1.fastq.gz"
+    String trimmed_2 = "${samplename}_trimmed_2.fastq.gz"
+    String log = "${samplename}_cutadapt.log"
+    
     command {
-        cutadapt \
-        -a ~{adapt1} \
-        -A ~{adapt2} \
-        ~{options} \
-        -o ~{output_prefix}_out1.fastq \
-        -p ~{output_prefix}_out2.fastq \
-        ~{in1_fastq} ~{in2_fastq}
+      cutadapt \
+      -a ~{adapt1} \
+      -A ~{adapt2} \
+      ~{cutadapt_options} \
+      -o ~{trimmed_1} \
+      -p ~{trimmed_2} \
+      ~{read1} ~{read2} > ~{log}
     }
 
     output {
-        File out1_fastq = "${output_prefix}_out1.fastq"
-        File out2_fastq = "${output_prefix}_out2.fastq"
+      File output_read1 = "${trimmed_1}"
+      File output_read2 = "${trimmed_2}"
+      File output_log = "${log}"
     }
 
     runtime {
-        docker: docker_image
+        docker: docker
         cpu: 2
         memory: "4G"
     }
@@ -45,19 +50,19 @@ task task_cutadapt {
         adapt2: {
             description: "Adapter sequence for the second read"
         }
-        in1_fastq: {
+        read1: {
             description: "Input FASTQ file 1"
         }
-        in2_fastq: {
+        read2: {
             description: "Input FASTQ file 2"
         }
-        output_prefix: {
+        samplename: {
             description: "Prefix for naming output files"
         }
-        options: {
+        cutadapt_options: {
             description: "Optional cutadapt parameters"
         }
-        docker_image: {
+        docker: {
             description: "Docker image containing cutadapt"
         }
     }

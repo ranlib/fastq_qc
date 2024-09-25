@@ -4,29 +4,28 @@ import "./task_cutadapt.wdl" as cutadapt
 
 workflow wf_cutadapt {
     input {
-        String adapt1         # Adapter for read 1
-        String adapt2         # Adapter for read 2
-        File in1_fastq        # Input FASTQ file 1
-        File in2_fastq        # Input FASTQ file 2
-        String output_prefix  # Prefix for output file names
-        String docker_image   # Docker image for cutadapt
-        String? options       # Optional cutadapt parameters
+      String adapt1         # Adapter for read 1
+      String adapt2         # Adapter for read 2
+      String? cutadapt_options       # Optional cutadapt parameters
+      String samplename     # Prefix for output file names
+      File read1            # Input FASTQ file 1
+      File read2            # Input FASTQ file 2
     }
 
     call cutadapt.task_cutadapt {
         input:
             adapt1 = adapt1,
             adapt2 = adapt2,
-            in1_fastq = in1_fastq,
-            in2_fastq = in2_fastq,
-            output_prefix = output_prefix,
-            docker_image = docker_image,
-            options = options
+            read1 = read1,
+            read2 = read2,
+            samplename = samplename,
+            cutadapt_options = cutadapt_options
     }
 
     output {
-        File trimmed_out1 = task_cutadapt.out1_fastq
-        File trimmed_out2 = task_cutadapt.out2_fastq
+      File trimmed_1 = task_cutadapt.output_read1
+      File trimmed_2 = task_cutadapt.output_read2
+      File log = task_cutadapt.output_log
     }
 
     meta {
