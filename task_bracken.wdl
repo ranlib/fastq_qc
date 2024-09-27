@@ -19,8 +19,8 @@ task task_bracken {
       tar -C "${PWD}/kraken" -xvf ~{database}
       if [ -s ~{kraken_report} ]
       then
-      N=$(cat ~{kraken_report} | awk 'BEGIN{s=0}{if($6 == '\"~{level}\"') s++}END{print s}')
-      if [ $N -gt 0 ]
+      NLINES=$(awk 'BEGIN{s=0}{if($6 == '\"~{level}\"') s++}END{print s}' ~{kraken_report})
+      if [ "${NLINES}" -gt 0 ]
       then
       bracken -d "${PWD}/kraken" \
       -i ~{kraken_report} \
@@ -30,11 +30,11 @@ task task_bracken {
       -t ~{threshold} 2> ~{samplename}.~{level}.bracken.err
       else
       touch ~{samplename}.~{level}.bracken.report
-      echo "Number or lines in input file is $N" >> ~{samplename}.~{level}.bracken.err
+      echo "Number or lines in input file is ${NLINES}" >> ~{samplename}.~{level}.bracken.err
       fi
       else
       touch ~{samplename}.~{level}.bracken.report
-      echo "Number or lines in input file is $N" >> ~{samplename}.~{level}.bracken.err
+      echo "Number or lines in input file is ${NLINES}" >> ~{samplename}.~{level}.bracken.err
       fi
     >>>
 
