@@ -1,5 +1,5 @@
 {
-    "wf_kreport.classificationTSV": "File",
+    "wf_kreport.classificationTSV": "/home/dbest/Software/wdl/test-centrifuge/_LAST/out/classificationTSV/ERR552797.centrifuge.classification.tsv",
     "wf_kreport.disk_size": 100,
     "wf_kreport.docker": "dbest/centrifuge:v1.0.4.1",
     "wf_kreport.indexFiles": [
