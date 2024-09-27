@@ -23,7 +23,7 @@ workflow wf_kreport {
   }
 
   output {
-    File krakenStyleTSV = task_kreport.krakenStyleTSV
+    File? krakenStyleTSV = task_kreport.krakenStyleTSV
     File krakenStyleErr = task_kreport.krakenStyleErr
   }
 }
