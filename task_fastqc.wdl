@@ -32,7 +32,7 @@ task task_fastqc {
     CONT="--contaminants contaminants.tsv"
     fi
 
-    fastqc --outdir "." --extract --threads ~{threads} ${ADAP} ${CONT} \
+    fastqc --outdir "." --extract --threads ~{threads} "${ADAP}" "${CONT}" \
     ~{"--limits " + limits} \
     ~{forwardReads} ~{reverseReads} 
 
