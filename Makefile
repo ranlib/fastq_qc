@@ -89,6 +89,21 @@ run_centrifuge:
 	time miniwdl run --dir test-centrifuge_negative_control --debug --cfg miniwdl_production.cfg -i wf_centrifuge_negative_control.json wf_centrifuge.wdl	
 
 #
+# kreport
+#
+kreport:
+	java -jar ~/Software/womtool-86.jar validate --inputs wf_kreport.json wf_kreport.wdl
+	miniwdl check wf_kreport.wdl
+
+kreport_docu:
+	wdl-aid wf_kreport.wdl -o wf_kreport.md
+
+run_kreport:
+	time miniwdl run --dir test-kreport --debug --cfg miniwdl_production.cfg -i wf_kreport.json wf_kreport.wdl
+	#time miniwdl run --dir test-kreport_Vaccinia --debug --cfg miniwdl_production.cfg -i wf_kreport_Vaccinia.json wf_kreport.wdl
+	#time miniwdl run --dir test-kreport_negative_control --debug --cfg miniwdl_production.cfg -i wf_kreport_negative_control.json wf_kreport.wdl	
+
+#
 # kraken2
 #
 kraken2:

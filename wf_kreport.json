@@ -1,0 +1,13 @@
+{
+    "wf_kreport.classificationTSV": "File",
+    "wf_kreport.disk_size": 100,
+    "wf_kreport.docker": "dbest/centrifuge:v1.0.4.1",
+    "wf_kreport.indexFiles": [
+        "/home/dbest/data/centrifuge/hpvc.1.cf",
+        "/home/dbest/data/centrifuge/hpvc.2.cf",
+        "/home/dbest/data/centrifuge/hpvc.3.cf",
+        "/home/dbest/data/centrifuge/hpvc.4.cf"
+    ],
+    "wf_kreport.memory": "20GB",
+    "wf_kreport.samplename": "ERR552797"
+}
