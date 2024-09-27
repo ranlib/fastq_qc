@@ -103,6 +103,12 @@ run_kreport:
 	#time miniwdl run --dir test-kreport_Vaccinia --debug --cfg miniwdl_production.cfg -i wf_kreport_Vaccinia.json wf_kreport.wdl
 	#time miniwdl run --dir test-kreport_negative_control --debug --cfg miniwdl_production.cfg -i wf_kreport_negative_control.json wf_kreport.wdl	
 
+run_kreport_0line:
+	time miniwdl run --dir test-kreport --debug --cfg miniwdl_production.cfg -i wf_kreport_0line.json wf_kreport.wdl
+
+run_kreport_empty:
+	time miniwdl run --dir test-kreport --debug --cfg miniwdl_production.cfg -i wf_kreport_empty.json wf_kreport.wdl
+
 #
 # kraken2
 #
