@@ -31,7 +31,7 @@ task task_kreport {
   >>>
 
   output {
-    File krakenStyleTSV = "${samplename}.centrifuge.classification.kraken_style.tsv"
+    File? krakenStyleTSV = "${samplename}.centrifuge.classification.kraken_style.tsv"
     File krakenStyleErr = "${samplename}.centrifuge.classification.kraken_style.err"
   }
 
