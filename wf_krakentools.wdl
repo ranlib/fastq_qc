@@ -32,7 +32,7 @@ workflow wf_krakentools {
   output {
     File read1_output = task_extract_kraken_reads.read1_output
     File read2_output = task_extract_kraken_reads.read2_output
-    File bracken_filtered = task_filter_bracken_output.output_file
+    File? bracken_filtered = task_filter_bracken_output.output_file
   }
 
 }
