@@ -40,7 +40,7 @@ task task_fastp {
   command <<<
     set -x
     
-    if [ ! -z ~{adapter_fasta} ]
+    if [ -s ~{adapter_fasta} ]
     then
     gunzip -c ~{adapter_fasta} > adapters.fa
     ADAPTERS="adapters.fa"
