@@ -21,9 +21,9 @@ task task_recentrifuge {
 
     command <<<
       set -x
-      N=$(cat ~{input_file} | wc -l)
-      echo "Number of lines in input_file = $N" > ~{outprefix}.err
-      if [ $N -gt 1 ]
+      N=$(wc -l < ~{input_file})
+      echo "Number of lines in input_file = ${N}" > ~{outprefix}.err
+      if [ "${N}" -gt 1 ]
       then
       cp ~{nodes_dump} .
       cp ~{names_dump} . 
