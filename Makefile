@@ -194,7 +194,8 @@ run_krakentools:
 # fastq_qc
 #
 fastq_qc:
-	java -jar ~/Software/womtool-86.jar validate --inputs wf_fastq_qc.json wf_fastq_qc.wdl
+	java -jar ~/Software/womtool-86.jar validate --inputs wf_fastq_qc_terra.json wf_fastq_qc.wdl
+	#java -jar ~/Software/womtool-86.jar validate --inputs wf_fastq_qc.json wf_fastq_qc.wdl	
 	#java -jar ~/Software/womtool-86.jar validate --inputs wf_fastq_qc_negative_control.json wf_fastq_qc.wdl
 	miniwdl check wf_fastq_qc.wdl
 
