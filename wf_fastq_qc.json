@@ -21,7 +21,7 @@
   "wf_fastq_qc.read2": "/home/dbest/data/Negative_Controls/NegCtl-040524_S12_L001_R2_001.fastq.gz",
   "wf_fastq_qc.run_fastp": false,
   "wf_fastq_qc.run_filter_bracken_output": false,
-  "wf_fastq_qc.run_kreport": false,
+  "wf_fastq_qc.run_kreport": true,
   "wf_fastq_qc.run_metaphlan": false,
   "wf_fastq_qc.run_recentrifuge": false,
   "wf_fastq_qc.samplename": "NegCtl-040524",
