@@ -36,8 +36,8 @@ workflow wf_centrifuge {
   output {
     File classificationTSV = task_centrifuge.classificationTSV
     File summaryReportTSV = task_centrifuge.summaryReportTSV
-    File krakenStyleTSV = task_kreport.krakenStyleTSV
-    File krakenStyleErr = task_kreport.krakenStyleErr
+    File? krakenStyleTSV = task_kreport.krakenStyleTSV
+    File? krakenStyleErr = task_kreport.krakenStyleErr
   }
 
   meta {
