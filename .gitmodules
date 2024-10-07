@@ -1,0 +1,3 @@
+[submodule "create_fastq_qc_report"]
+	path = create_fastq_qc_report
+	url = git@github.com:ranlib/create_fastq_qc_report.git
