@@ -1,8 +1,8 @@
 {
     "wf_recentrifuge.input_file": "/home/dbest/Software/wdl/test-centrifuge/_LAST/out/classificationTSV/ERR552797.centrifuge.classification.tsv",
     "wf_recentrifuge.input_type": "centrifuge",
-    "wf_recentrifuge.names_dump": "/home/dbest/Software/wdl/taxdump/names.dmp",
-    "wf_recentrifuge.nodes_dump": "/home/dbest/Software/wdl/taxdump/nodes.dmp",
+    "wf_recentrifuge.names_dump": "/home/dbest/Software/fastq_qc/taxdump/names.dmp",
+    "wf_recentrifuge.nodes_dump": "/home/dbest/Software/fastq_qc/taxdump/nodes.dmp",
     "wf_recentrifuge.outprefix": "ERR552797",
     "wf_recentrifuge.task_recentrifuge.controls_number": 0,
     "wf_recentrifuge.task_recentrifuge.docker": "dbest/recentrifuge:v1.14.1",

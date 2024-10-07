@@ -13,6 +13,7 @@ import "./task_kreport.wdl" as kreport
 import "./task_recentrifuge.wdl" as recentrifuge
 import "./task_metaphlan.wdl" as metaphlan
 import "./task_multiqc.wdl" as multiqc
+import "./create_fastq_qc_report/task_create_fastq_qc_report.wdl" as create_pdf_report
 
 workflow wf_fastq_qc {
   input {
@@ -181,7 +182,16 @@ workflow wf_fastq_qc {
 	bowtie2index = bowtie2index
       }
     }
-  }
+
+
+    call create_pdf_report.task_create_fastq_qc_report {
+      input:
+      stats = task_seqkit_stats.stats_output,
+      centrifuge = task_centrifuge.summaryReportTSV,
+      samplename = samplename
+    }
+    
+  } # end filter
   
   Array[File] allReports = select_all([
   task_fastqc.forwardData,
@@ -256,6 +266,9 @@ workflow wf_fastq_qc {
     
     # multiqc
     File? multiqc_report = task_multiqc.report
+
+    # pdf report
+    File? pdf_report = task_create_fastq_qc_report.report
   }
 
 }

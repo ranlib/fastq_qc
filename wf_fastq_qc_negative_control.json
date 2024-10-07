@@ -12,8 +12,8 @@
     "/home/dbest/data/centrifuge/hpvc.4.cf"
   ],
   "wf_fastq_qc.minNumberReads": 1,
-  "wf_fastq_qc.names_dump": "/home/dbest/Software/wdl/taxdump/names.dmp",
-  "wf_fastq_qc.nodes_dump": "/home/dbest/Software/wdl/taxdump/nodes.dmp",
+  "wf_fastq_qc.names_dump": "/home/dbest/Software/fastq_qc/taxdump/names.dmp",
+  "wf_fastq_qc.nodes_dump": "/home/dbest/Software/fastq_qc/taxdump/nodes.dmp",
   "wf_fastq_qc.read1": "/home/dbest/data/Negative_Controls/NegCtl-040524_S12_L001_R1_001.fastq.gz",
   "wf_fastq_qc.read2": "/home/dbest/data/Negative_Controls/NegCtl-040524_S12_L001_R2_001.fastq.gz",
   "wf_fastq_qc.run_fastp": false,
